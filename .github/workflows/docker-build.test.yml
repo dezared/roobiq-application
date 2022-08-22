@@ -16,5 +16,5 @@ jobs:
       with:
         ssh_host: 185.91.55.155
         ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        ssh_user: root
-        docker_compose_filename: docker-compose.override.yml
+        ssh_user: docker-deploy
+        docker_compose_filename: ./docker-compose.override.yml
