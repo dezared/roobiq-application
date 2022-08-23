@@ -34,7 +34,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddEntityFrameworkNpgsql()
                 .AddDbContext<ApplicationContext>(options =>
                     options.UseNpgsql(
-                        Configuration.GetConnectionString("BlogContext")
+                        Environment.GetEnvironmentVariable("BlogContext")
                     )
                 );
 
@@ -54,28 +54,28 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         ValidateIssuerSigningKey = true,
 
                         IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(Configuration.GetValue<string>("JWTSecretKey"))
+                            Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWTSecretKey"))
                         )
                     };
                 });
 
 builder.Services.AddSingleton<IAuthService>(
                 new AuthService(
-                    Configuration.GetValue<string>("JWTSecretKey"),
-                    Configuration.GetValue<int>("JWTLifespan")
+                    Environment.GetEnvironmentVariable("JWTSecretKey"),
+                    Convert.ToInt32(Environment.GetEnvironmentVariable("JWTLifespan"))
                 )
             );
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
+    app.UseHttpsRedirection();
 }
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
 app.UseRouting();
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
