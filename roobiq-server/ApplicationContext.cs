@@ -8,6 +8,7 @@ namespace roobiq_server
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
 
         public DbSet<UserEntity>? Users { get; set; }
+        public DbSet<PresentationEntity>? Presentations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

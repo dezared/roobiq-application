@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using roobiq_server;
+using roobiq_server.Repository.Presentation;
 using roobiq_server.Repository.User;
 using roobiq_server.Services.Auth;
 using System.Text;
@@ -20,6 +21,7 @@ builder.Services.AddControllers();
 /* Service connector area */
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPresentationRepository, PresentationRepository>();
 
 /* end of area */
 
@@ -34,6 +36,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddEntityFrameworkNpgsql()
                 .AddDbContext<ApplicationContext>(options =>
                     options.UseNpgsql(
+                        //"Server=localhost;Database=roobiq-database;Username=postgres;Password=admin;Port=5432"
                         Environment.GetEnvironmentVariable("BlogContext")
                     )
                 );
