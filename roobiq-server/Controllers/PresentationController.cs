@@ -29,6 +29,7 @@ namespace roobiq_server.Controllers
             var presentation = new PresentationEntity()
             {
                 DateTimeCreateTicks = DateTime.Now.Ticks,
+                DateTimeUpdateTicks = DateTime.Now.Ticks,
                 JsonPresentationText = model.JsonPresentationText,
                 Name = model.Name,
                 OwnerUserId = model.OwnerUserId

@@ -14,7 +14,7 @@ namespace roobiq_server.Repository.Presentation
 
         public async Task<List<PresentationEntity>> GetAllPresentationForUser(string userId)
         {
-            var entityList = await _context.Presentations.Where(m => m.OwnerUserId == userId).ToListAsync();
+            var entityList = await _context.Presentations.Where(m => m.OwnerUserId == userId).OrderByDescending(m => m.DateTimeUpdateTicks).ToListAsync();
             return entityList;
         }
     }
