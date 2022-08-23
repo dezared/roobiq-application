@@ -15,8 +15,8 @@ namespace roobiq_server.Migrations
                     Id = table.Column<string>(type: "text", nullable: false),
                     JsonPresentationText = table.Column<string>(type: "text", nullable: true),
                     Name = table.Column<string>(type: "text", nullable: true),
-                    DateTimeCreateTicks = table.Column<string>(type: "text", nullable: true),
-                    DateTimeUpdateTicks = table.Column<string>(type: "text", nullable: true),
+                    DateTimeCreateTicks = table.Column<long>(type: "bigint", nullable: false, defaultValue: 0L),
+                    DateTimeUpdateTicks = table.Column<long>(type: "bigint", nullable: false, defaultValue: 0L),
                     OwnerUserId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
