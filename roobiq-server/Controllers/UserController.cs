@@ -38,14 +38,14 @@ namespace roobiq_server.Controllers
         }
 
         [HttpPost("register")]
-        public ActionResult<AuthData> Post([FromBody] RegisterModel model, [FromBody] UserDataRequest userDataAuth)
+        public ActionResult<AuthData> Post(RegisterModel model)
         {
-            var bufferToken = _authService.GetAuthData(userDataAuth.headers.Id);
-            var userBuffer = _userRepository.GetSingle(u => u.Id == userDataAuth.headers.Id);
+            var bufferToken = _authService.GetAuthData(model.headers.Id);
+            var userBuffer = _userRepository.GetSingle(u => u.Id == model.headers.Id);
 
             if(userBuffer != null) // если пользователь существует
             {
-                if(bufferToken.Token == userDataAuth.headers.AccessToken) // если токен и айдишник равны
+                if(bufferToken.Token == model.headers.AccessToken) // если токен и айдишник равны
                     return BadRequest(new { user = "[ERR] ¬ы уже авторизированы." });
                 else return BadRequest(new { user = "[ERR] ќшибка авторизации." });
             }
