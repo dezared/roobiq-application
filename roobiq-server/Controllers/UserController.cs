@@ -40,17 +40,12 @@ namespace roobiq_server.Controllers
         [HttpPost("register")]
         public ActionResult<AuthData> Post(RegisterModel model)
         {
-            var bufferToken = _authService.GetAuthData(model.headers.Id);
-            var userBuffer = _userRepository.GetSingle(u => u.Id == model.headers.Id);
-
-            if(userBuffer != null) // если пользователь существует
-            {
-                if(bufferToken.Token == model.headers.AccessToken) // если токен и айдишник равны
-                    return BadRequest(new { user = "[ERR] Вы уже авторизированы." });
-                else return BadRequest(new { user = "[ERR] Ошибка авторизации." });
-            }
-
             if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            if(!String.IsNullOrEmpty(model.headers.AccessToken))
+                return BadRequest(new { email = "[ERR] Vi uje avtorizirovani!!!!!!!" });
+
+            //_authService.ValidateUser(model.headers.AccessToken);
 
             var emailUniq = _userRepository.isEmailUniq(model.Email);
             if (!emailUniq) return BadRequest(new { email = "[ERR] Пользователя с таким e-mail уже существует." });

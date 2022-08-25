@@ -11,6 +11,7 @@ namespace roobiq_server.Services.Auth
     {
         AuthData GetAuthData(string id);
         string HashPassword(string password);
+        bool ValidateUser(string token);
         bool VerifyPassword(string actualPassword, string hashedPassword);
     }
 
@@ -23,6 +24,32 @@ namespace roobiq_server.Services.Auth
         {
             this._jwtSecret = jwtSecret;
             this._jwtLifespan = jwtLifespan;
+        }
+
+        public bool ValidateUser(string token)
+        {
+            var validationParameters = new TokenValidationParameters()
+            {
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret)),
+                ValidateLifetime = true,
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = false
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken validatedToken = null;
+            try
+            {
+                tokenHandler.ValidateToken(token, validationParameters, out validatedToken);
+            }
+            catch (SecurityTokenException)
+            {
+                return false;
+            }
+            catch (Exception e) { }
+
+            return validatedToken != null;
         }
 
         public AuthData GetAuthData(string id)
