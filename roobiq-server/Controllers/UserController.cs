@@ -24,32 +24,35 @@ namespace roobiq_server.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
+            if (!String.IsNullOrEmpty(model.headers.AccessToken))
+                return BadRequest(new { email = "code_login:HaveBeenAuthorize" });
+
             var user = _userRepository.GetSingle(u => u.Email == model.Email);
 
             if (user == null)
-                return BadRequest(new { email = "[ERR] Пользователя с таким e-mail не существует." });
+                return BadRequest(new { email = "code_login:NotFoundUser" });
 
             var passwordValid = _authService.VerifyPassword(model.Password, user.Password);
 
             if (!passwordValid)
-                return BadRequest(new { password = "[ERR] Неверный пароль" });
+                return BadRequest(new { password = "code_login:WrongPassword" });
 
             return _authService.GetAuthData(user.Id);
         }
 
         [HttpPost("register")]
-        public ActionResult<AuthData> Post(RegisterModel model)
+        public ActionResult<AuthData> Post([FromBody] RegisterModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             if(!String.IsNullOrEmpty(model.headers.AccessToken))
-                return BadRequest(new { email = "[ERR] Vi uje avtorizirovani!!!!!!!" });
+                return BadRequest(new { email = "code_login:HaveBeenAuthorize" });
 
             //_authService.ValidateUser(model.headers.AccessToken);
 
             var emailUniq = _userRepository.isEmailUniq(model.Email);
-            if (!emailUniq) return BadRequest(new { email = "[ERR] Пользователя с таким e-mail уже существует." });
-            if(model.Password != model.PasswordReinput) return BadRequest(new { email = "[ERR] Пароль не совпадают." });
+            if (!emailUniq) return BadRequest(new { email = "code_login:UserAlredyHas" });
+            if(model.Password != model.PasswordReinput) return BadRequest(new { email = "code_login:PasswordNotSimilar" });
 
             var id = Guid.NewGuid().ToString();
             var user = new UserEntity
