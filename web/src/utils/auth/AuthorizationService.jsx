@@ -1,6 +1,7 @@
 import axios from "axios";
 import AuthBarier from '../../utils/auth/AuthBarier';
 
+
 const API_URL = "http://185.91.55.155:5001/api/user/";
 
 class AuthService {

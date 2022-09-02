@@ -18,14 +18,14 @@ services:
       dockerfile: web/Dockerfile
     restart: always
     ports:
-      - 80:80
+      - 3001:80
 
   roobiq-server:
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     build:
       context: .
-      dockerfile: server/roobiq-server/Dockerfile
+      dockerfile: roobiq-server/Dockerfile
     depends_on:
       - roobiq-db
     restart: always
