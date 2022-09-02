@@ -2,7 +2,7 @@ name: Build docker and push SSH
 
 on:
   push:
-    branches: [dev]
+    branches: [dev-service]
 
 jobs:
   deploy:
