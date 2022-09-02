@@ -11,6 +11,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - uses: appleboy/ssh-action@master
+      name: prune docker
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        script: |
+          docker rm -f $(docker ps -a -q)
+          docker system prune -a -f
+
     - uses: alex-ac/github-action-ssh-docker-compose@master
       name: Docker-Compose Remote Deployment1
       with:
