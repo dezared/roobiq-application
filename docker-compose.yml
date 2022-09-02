@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+
+  roobiq-db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=roobiq-database
+    restart: always
+
+  roobiq-client:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    restart: always
+    ports:
+      - 80:80
+
+  roobiq-server:
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    build:
+      context: .
+      dockerfile: server/roobiq-server/Dockerfile
+    depends_on:
+      - roobiq-db
+    restart: always
+    environment:
+      - BlogContext=Server=roobiq-db;Database=roobiq-database;Username=postgres;Password=admin;Port=5432
+      - JWTSecretKey=bRhYJRlZvBj2vW4MrV5HVdPgIE6VMtCFB0kTtJ1m
+      - JWTLifespan=2592000
+    ports:
+      - 5001:80
