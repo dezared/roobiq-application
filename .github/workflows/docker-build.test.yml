@@ -24,7 +24,7 @@ jobs:
     - uses: alex-ac/github-action-ssh-docker-compose@master
       name: Docker-Compose Remote Deployment1
       with:
-        ssh_host: 185.91.55.155
+        ssh_host: ${{ secrets.SSH_HOST }}
         ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
         ssh_user: docker-deploy
         docker_compose_filename: ./docker-compose.yml

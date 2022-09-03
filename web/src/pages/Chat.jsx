@@ -195,7 +195,7 @@ function Chat() {
               onClose={handleClose}
             >
               <div>
-                <CheckPresentation answers={answers} handleChange={handleChange}></CheckPresentation>
+                <CheckPresentation answers={answers} handleChange={handleChange} сurrentStep={stepIndex}></CheckPresentation>
               </div>
             </Modal>
 
