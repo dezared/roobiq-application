@@ -4,7 +4,8 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom' ;
-import initScenarios, { ActionType as AnswerType } from '../configs/scenarios';
+import initScenarios from '../configs/scenarios';
+import { ActionType as AnswerType } from '../configs/constants';
 import ActionBlock from '../components/chat/action-block/ActionBlock';
 import ChatBlockComponent from '../components/chat/ChatBlock';
 import Button from '../components/controls/Button';

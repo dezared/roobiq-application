@@ -2,7 +2,7 @@
 import React, { Fragment, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Avatar from '../controls/Avatar';
-import { ActionType } from '../../configs/scenarios';
+import { ActionType } from '../../configs/constants';
 
 const Wrap = styled.div`
   width: 100%;

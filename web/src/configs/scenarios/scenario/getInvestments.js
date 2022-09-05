@@ -1,5 +1,4 @@
-import { ActionType } from "..";
-import { SLIDE_TYPES } from "../../constants";
+import { SLIDE_TYPES, ActionType } from "../../constants";
 
 export const getInvestments = {
   numId: 1,

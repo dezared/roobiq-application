@@ -15,3 +15,17 @@ export const SLIDE_LIST = [
   SLIDE_TYPES?.MARKET, SLIDE_TYPES?.COMPETITORS_SPLASH,SLIDE_TYPES?.COMPETITORS_AND_ALTERNATIVES, 
   SLIDE_TYPES?.DIFFERENCE, SLIDE_TYPES?.TEAM
 ];
+
+export const ActionType = {
+  text: 'Text',
+  checkboxArray: 'CheckboxArray',
+  textArray: 'TextArray',
+  textArrayForm: 'textArrayForm',
+  objectArray: 'ObjectArray',
+  selectMultiple: 'SelectMultiple',
+  selectSingle: 'SelectSingle',
+  object: 'Object',
+  image: 'Image',
+  costs: 'Costs',
+  unitEconomy: 'UnitEconomy',
+};

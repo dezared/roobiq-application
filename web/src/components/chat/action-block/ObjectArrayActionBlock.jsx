@@ -14,7 +14,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import TextInput from '../../controls/TextInput';
 import Button from '../../controls/Button';
 import ErrorBlock from '../../controls/ErrorBlock';
-import { ActionType } from '../../../configs/scenarios';
+import { ActionType } from '../../../configs/constants';
 import Checkbox from "../../controls/Checkbox";
 import {Image} from "@mui/icons-material";
 import ImagePicker from "../../controls/ImagePicker";

@@ -14,7 +14,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import TextInput from '../../controls/TextInput';
 import Button from '../../controls/Button';
 import ErrorBlock from '../../controls/ErrorBlock';
-import { ActionType } from '../../../configs/scenarios';
+import { ActionType } from '../../../configs/constants';
 import TextArrayActionBlockForm from './TextArrayActionBlockForm';
 
 const Wrap = styled.div`

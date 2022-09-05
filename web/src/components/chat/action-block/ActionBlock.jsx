@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import TextActionBlock from './TextActionBlock';
-import { ActionType } from '../../../configs/scenarios';
+import { ActionType } from '../../../configs/constants';
 import TextArrayActionBlock from './TextArrayActionBlock';
 import ObjectArrayActionBlock from './ObjectArrayActionBlock';
 import SelectMultipleActionBlock from './SelectMultipleActionBlock';
