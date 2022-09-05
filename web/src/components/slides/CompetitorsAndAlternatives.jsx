@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
 const SlideBox = styled.div`
   width: 100%;
   height: 100%;
@@ -30,7 +29,6 @@ const MyTableContainer = styled.div`
   height: 80%;
   top: 20%;
 `;
-
 const Table = styled.table`
   width: 100%;
   height: 100%;
@@ -45,18 +43,15 @@ const MyTableHead = styled.th`
 
 const TableRow = styled.tr`
   display: flex;
-
   & svg {
     stroke: white;
   };
-
   &:nth-child(2n) {
     background: #25A9E0;
     color: #fff;
   };
   &:nth-child(2n+1) {
     color: #25A9E0;
-
     & svg {
       stroke: #25A9E0!important;
     };
@@ -108,13 +103,12 @@ function CompetitorsAndAlternatives({ title, massive, competitors, properties })
     </MyTableContainer>
     </SlideBox>
   )
-}
-
+            }
 CompetitorsAndAlternatives.propTypes = {
   title: PropTypes.string,
   massive: PropTypes.array,
   competitors: PropTypes.array,
-  properties: PropTypes.array
+  properties: PropTypes.array,
 }
 
 CompetitorsAndAlternatives.defaultProps = {
@@ -183,5 +177,4 @@ CompetitorsAndAlternatives.defaultProps = {
     ]
   ]
 }
-
 export default CompetitorsAndAlternatives;

@@ -16,6 +16,7 @@ const SlideBox = styled.div`
 
 const Difference = styled.p`
   position: absolute;
+  width:100%;
   top: 35.28%;
   bottom: 22.87%;
   color: #fff;

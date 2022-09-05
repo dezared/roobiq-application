@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch, Redirect} from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import history from '../redux/store';
 
 import '../styles/utils.css';
@@ -21,15 +21,16 @@ function RouterNavigator() {
       <Switch>
         { user && user.token? (
           <>
+            {/* <Redirect to="/" /> */}
             <Route path="/" exact><Main /></Route>
             <Route path="/constructor" exact><ScenarioSelection /></Route>
-            <Route path="/constructor/:id" exact><Chat /></Route>
+            <Route path="/constructor/:scenarioId" exact><Chat /></Route>
             <Route path="/components" exact><Components /></Route>
             <Route path="/slides" exact><ViewPresentation /></Route>
           </>
         ):(
           <>
-            <Redirect to="/login" />
+            {/* <Redirect to="/login" /> */}
             <Route path="/login" exact><Login /></Route>
             <Route path="/registration" exact><Registration /></Route>
           </>

@@ -71,12 +71,13 @@ const Sources = styled.p`
   color: #25A9E0;
 `;
 
+
 const BiggestCircle = styled.div`
   width: 45%;
   height: 80%;
   position: absolute;
-  left: 45%;
-  top: 12.15%;
+  right: 3%;
+  top: 8.15%;
   border-radius: 100%;
   background: #C6D5DB;
   font-size: 1em;
@@ -91,6 +92,7 @@ const MiddleCircle = styled.div`
   border-radius: 100%;
   background: #B4CFDA;
   font-size: 0.9em;
+  text-align: center;
 `;
 
 
@@ -116,8 +118,8 @@ const RightTitle = styled.h2`
   font-size: 2.5em;
   color: #fff;
   position: absolute;
-  left: 23%;
-  top: 14%;
+  left: 40%;
+  top: 12%;
 `;
 
 const NamingArrowWrapper = styled.div`
@@ -171,6 +173,7 @@ function MarketSlide1({ title, tam, sam, som, sources }) {
         </List>
       </TitlesContainer>
       <Sources>Источники: {sources}</Sources>
+       
       <BiggestCircle>
         <RightTitle>{tam.value}</RightTitle>
         <MiddleCircle>
@@ -180,6 +183,7 @@ function MarketSlide1({ title, tam, sam, som, sources }) {
           </SmallestCircle>
         </MiddleCircle>
       </BiggestCircle>
+    
     </SlideBox>
   )
 }

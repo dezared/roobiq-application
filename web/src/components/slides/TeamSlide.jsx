@@ -40,6 +40,7 @@ const Human = styled.div`
   flex-direction: column;
   height: 100%;
   width: auto;
+  text-align: center;
 `;
 
 const DevDesc = styled.ul`
@@ -50,11 +51,13 @@ const DevDesc = styled.ul`
 
 const DevDescLi = styled.li`
   font-size: 0.7em;
+  padding-left: 0px;
 `;
 
 const HumanName = styled.h2`
   color: #25A9E0;
   font-size: 1.3em;
+  padding-top: 10px;
 `;
 
 const HumanJob = styled.h3`
@@ -65,8 +68,8 @@ const HumanJob = styled.h3`
 
 const ImageDiv = styled.div`
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
 
   & img {
     width: 100%;

@@ -3,7 +3,7 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom' ;
+import { Link, useParams } from 'react-router-dom' ;
 import initScenarios, { ActionType as AnswerType } from '../configs/scenarios';
 import ActionBlock from '../components/chat/action-block/ActionBlock';
 import ChatBlockComponent from '../components/chat/ChatBlock';
@@ -46,7 +46,10 @@ const BtnGroup = styled.div`
 
 // eslint-disable-next-line react/prop-types
 function Chat() {
-  const scenario = useMemo(() => initScenarios[1], []);
+  const { scenarioId } = useParams();
+  const finalScenarioId = scenarioId - 1;
+
+  const scenario = useMemo(() => initScenarios[finalScenarioId], [finalScenarioId]);
 
   const [stepIndex, setStepIndex] = useState(0);
 
@@ -89,7 +92,7 @@ function Chat() {
       if (stepIndex === 0) {
         newChat.push({
           question: 'Расскажи мне о цели презентации пожалуйста',
-          answer: 'Привлечь инвестора',
+          answer: scenario?.name,
           id: 'first',
           answerType: AnswerType.text,
         });
@@ -111,7 +114,7 @@ function Chat() {
         });
       }
 
-      if (currentStep.questions.length == questionIndex) {
+      if (currentStep.questions.length === questionIndex) {
         newChat.push({
           question: 'Ты молодец! Мы заполнили секцию ✅',
           id: 'nice',
@@ -126,7 +129,7 @@ function Chat() {
 
       return newChat;
     },
-    [currentStep.questions, answers, stepIndex, questionIndex],
+    [currentStep.questions, answers, stepIndex, questionIndex, scenario],
   );
 
   const onActionChange = (obj) => {
@@ -165,6 +168,8 @@ function Chat() {
     setopenPresentationCompleteViewer(!openPresentationCompleteViewer)
  }
 
+ console.log(scenarioId, chat);
+
   return (
     <Wrap>
       <Content>
@@ -195,7 +200,7 @@ function Chat() {
               onClose={handleClose}
             >
               <div>
-                <CheckPresentation answers={answers} handleChange={handleChange} сurrentStep={stepIndex}></CheckPresentation>
+                <CheckPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChange} сurrentStep={stepIndex}></CheckPresentation>
               </div>
             </Modal>
 
@@ -205,7 +210,7 @@ function Chat() {
               sx={{ overflow: "scroll" }}
             >
               <div>
-                <ViewPresentation answers={answers} handleChange={handleChangePresentationCompleteViewer}></ViewPresentation>
+                <ViewPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChangePresentationCompleteViewer}></ViewPresentation>
               </div>
             </Modal>
           </div>

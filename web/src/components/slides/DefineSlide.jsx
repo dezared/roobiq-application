@@ -74,7 +74,7 @@ export const DefineSlide = ({type, answers}) => {
               mass.push(answers[5][1]["direct_competitors"].map(function(v, index_y) {
                   var flag = false;
                   var key = index_x + "-" + index_y;
-                  if(v.properties.find(m => m == val))
+                  if(v.properties.find(m => m === val))
                       flag = true;
                   
                   return { key: key, flag: flag }

@@ -68,6 +68,8 @@ const SolutionItemList = styled.ol`
   flex-wrap: wrap;
   align-content: flex-start;
   align-items: stretch;
+  padding-left: 15%;
+  max-width: 70%;
 `;
 
 const SolutionItemLi = styled.li`
