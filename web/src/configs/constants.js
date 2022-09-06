@@ -3,10 +3,12 @@ export const SLIDE_TYPES = {
   AUDITRIUM: 'AuditoriumSlide', 
   PROBLEM: 'ProblemSlide',
   SOLUTION: 'SolutionSlide',
-  MARKET: 'MarketSlide1', 
+  MARKET1: 'MarketSlide1', 
+  MARKET2: 'MarketSlide2',
   COMPETITORS_SPLASH: 'CompetitorsSplashSlide',
   COMPETITORS_AND_ALTERNATIVES: 'CompetitorsAndAlternatives',
   DIFFERENCE: 'DifferenceSlide',
+  BUISNES: 'BuisnesModel',
   TEAM: 'TeamSlide',
 }
 

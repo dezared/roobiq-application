@@ -302,7 +302,7 @@ export const getInvestments = {
     {
       id: 'business_model',
       name: 'Бизнес-модель',
-      slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
+      slideType: SLIDE_TYPES?.BUISNES,
       questions: [
         {
           id: 'promotion_types',
@@ -383,120 +383,121 @@ export const getInvestments = {
         },
       ],
     },
-    {
-      id: 'economy',
-      name: 'Экономика',
-      slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
-      questions: [
-        {
-          id: 'billing_period',
-          question: 'Укажи расчетный период',
-          answerType: ActionType.selectSingle,
-          payload: {
-            title: 'Расчетный период',
-            btnText: 'Указать',
-            options: [{
-              value: 'day',
-              title: 'День',
-            }, {
-              value: 'week',
-              title: 'Неделя',
-            }, {
-              value: 'decade',
-              title: 'Декада',
-            }, {
-              value: 'month',
-              title: 'Месяц',
-            }, {
-              value: 'quarter',
-              title: 'Квартал',
-            }, {
-              value: 'half_year',
-              title: 'Полугодие',
-            }, {
-              value: 'year',
-              title: 'Год',
-            }],
-          },
-        },
-        {
-          id: 'costs',
-          question: 'Укажи издержки',
-          answerType: ActionType.costs,
-          payload: {
-            answer: 'Готово',
-          },
-        },
-        {
-          id: 'unitEconomy',
-          question: 'Выходим на создание юнит-экономики и теперь дополним некоторые данные:',
-          answerType: ActionType.unitEconomy,
-          payload: {
-            answer: 'Готово',
-          },
-        },
-      ],
-    },
-    {
-      id: 'request',
-      name: 'Запрос',
-      slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
-      questions: [
-        {
-          id: 'question_to_investor',
-          question: 'Давай сформулируем запрос к инвестору',
-          answerType: ActionType.selectMultiple,
-          payload: {
-            title: 'Запрос',
-            btnText: 'Указать',
-            withOwnOption: true,
-            options: [{
-              value: 'money',
-              title: 'Инвестиции деньгами',
-            }, {
-              value: 'expertise',
-              title: 'Инвестиции экспертизой',
-            }, {
-              value: 'consultation',
-              title: 'Консультация',
-            }, {
-              value: 'feedback',
-              title: 'Обратная связь',
-            }, {
-              value: 'strategic_partner',
-              title: 'Стратегическое партнёрство',
-            }],
-          },
-        },
-        {
-          id: 'money',
-          question: 'Супер! Давай уточним запрос, укажи сумму и и то, на что пойдут эти деньги.',
-          answerType: ActionType.objectArray,
-          payload: {
-            title: 'Запрос: инвестиции деньгами',
-            description: 'Уточни запрос, указав нужную сумму и то, на что пойдут эти деньги.',
-            itemName: 'Запрос',
-            btnText: 'Указать',
+  // у меня нет слайдов с экономикой и запросом к инвестору, пока закомментил чтобы не крашилась преза
+    // {
+    //   id: 'economy',
+    //   name: 'Экономика',
+    //   slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
+    //   questions: [
+    //     {
+    //       id: 'billing_period',
+    //       question: 'Укажи расчетный период',
+    //       answerType: ActionType.selectSingle,
+    //       payload: {
+    //         title: 'Расчетный период',
+    //         btnText: 'Указать',
+    //         options: [{
+    //           value: 'day',
+    //           title: 'День',
+    //         }, {
+    //           value: 'week',
+    //           title: 'Неделя',
+    //         }, {
+    //           value: 'decade',
+    //           title: 'Декада',
+    //         }, {
+    //           value: 'month',
+    //           title: 'Месяц',
+    //         }, {
+    //           value: 'quarter',
+    //           title: 'Квартал',
+    //         }, {
+    //           value: 'half_year',
+    //           title: 'Полугодие',
+    //         }, {
+    //           value: 'year',
+    //           title: 'Год',
+    //         }],
+    //       },
+    //     },
+    //     {
+    //       id: 'costs',
+    //       question: 'Укажи издержки',
+    //       answerType: ActionType.costs,
+    //       payload: {
+    //         answer: 'Готово',
+    //       },
+    //     },
+    //     {
+    //       id: 'unitEconomy',
+    //       question: 'Выходим на создание юнит-экономики и теперь дополним некоторые данные:',
+    //       answerType: ActionType.unitEconomy,
+    //       payload: {
+    //         answer: 'Готово',
+    //       },
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 'request',
+    //   name: 'Запрос',
+    //   slideType: SLIDE_TYPES?.COMPETITORS_SPLASH, 
+    //   questions: [
+    //     {
+    //       id: 'question_to_investor',
+    //       question: 'Давай сформулируем запрос к инвестору',
+    //       answerType: ActionType.selectMultiple,
+    //       payload: {
+    //         title: 'Запрос',
+    //         btnText: 'Указать',
+    //         withOwnOption: true,
+    //         options: [{
+    //           value: 'money',
+    //           title: 'Инвестиции деньгами',
+    //         }, {
+    //           value: 'expertise',
+    //           title: 'Инвестиции экспертизой',
+    //         }, {
+    //           value: 'consultation',
+    //           title: 'Консультация',
+    //         }, {
+    //           value: 'feedback',
+    //           title: 'Обратная связь',
+    //         }, {
+    //           value: 'strategic_partner',
+    //           title: 'Стратегическое партнёрство',
+    //         }],
+    //       },
+    //     },
+    //     {
+    //       id: 'money',
+    //       question: 'Супер! Давай уточним запрос, укажи сумму и и то, на что пойдут эти деньги.',
+    //       answerType: ActionType.objectArray,
+    //       payload: {
+    //         title: 'Запрос: инвестиции деньгами',
+    //         description: 'Уточни запрос, указав нужную сумму и то, на что пойдут эти деньги.',
+    //         itemName: 'Запрос',
+    //         btnText: 'Указать',
 
-            objectFields: [{
-              name: 'sum',
-              label: 'Сумма',
-              placeholder: 'Сумму печатать тут',
-              type: ActionType.text,
-            }, {
-              name: 'goal',
-              label: 'Цель',
-              placeholder: 'Цель печатать тут',
-              type: ActionType.text,
-            }],
-          },
-        },
-      ],
-    },
+    //         objectFields: [{
+    //           name: 'sum',
+    //           label: 'Сумма',
+    //           placeholder: 'Сумму печатать тут',
+    //           type: ActionType.text,
+    //         }, {
+    //           name: 'goal',
+    //           label: 'Цель',
+    //           placeholder: 'Цель печатать тут',
+    //           type: ActionType.text,
+    //         }],
+    //       },
+    //     },
+    //   ],
+    // },
     {
       id: 'team',
       name: 'Команда',
-      slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
+      slideType: SLIDE_TYPES?.TEAM,
       questions: [
         {
           id: 'members',
