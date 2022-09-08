@@ -65,33 +65,33 @@ const Description = styled.p`
 
 `;
 
-function ProblemSlide({ title, list, desc }) {
+function AuditoriumSlide({ data, slideQuestions }) {
+  const [list, desc] = data;
+  const [listId, descId] = slideQuestions;
+
+  const finalList = list[listId?.id] || ['We haven`t this skills', 'We haven`t this skills 2', 'We haven`t this skills 3'];
+  const finalDesc = desc[descId?.id] || 'Большинство сотрудников разного уровня и людей вообще не обладает достаточным набором навыков и компетенций для создания презентаций и тем более для создания полноценного набора материалов по проекту/стартапу. Проблемы подстерегают всюду: от правильной структуры каждого документа до необходимости искать и анализировать информацию + к этому можно добавить оформление всех материалов.';
+
   return (
     <SlideBox>
-      <Title>{title}</Title>
+      <Title>Аудитория</Title>
       <TitleList>
-        {list.map((tit) => <TitleLi key={tit.index}>{tit.desc}</TitleLi>)}
+        {finalList.map((item, indexItem) => <TitleLi key={indexItem}>{item}</TitleLi>)}
       </TitleList>
       <Line/>
-      <Description>{desc}</Description>
+      <Description>{finalDesc}</Description>
     </SlideBox>
   )
 }
 
-ProblemSlide.propTypes = {
-  title: PropTypes.string,
-  desc: PropTypes.string,
-  list: PropTypes.array,
+AuditoriumSlide.propTypes = {
+  data: PropTypes.array,
+  slideQuestions: PropTypes.array,
 }
 
-ProblemSlide.defaultProps = {
-  title: 'Аудитория',
-  desc: 'Большинство сотрудников разного уровня и людей вообще не обладает достаточным набором навыков и компетенций для создания презентаций и тем более для создания полноценного набора материалов по проекту/стартапу. Проблемы подстерегают всюду: от правильной структуры каждого документа до необходимости искать и анализировать информацию + к этому можно добавить оформление всех материалов.',
-  list: [
-    {desc: 'We haven`t this skills', index: 1},
-    {desc: 'We haven`t this skills 2', index: 2},
-    {desc: 'We haven`t this skills 3', index: 3},
-  ]
+AuditoriumSlide.defaultProps = {
+  data: [],
+  slideQuestions: [],
 }
 
-export default ProblemSlide;
+export default AuditoriumSlide;

@@ -28,14 +28,16 @@ export const DefineSlide = ({slideQuestions, type, answers, slideIndex}) => {
 
   const slideAnswer = answers[slideIndex];
 
+  const slideProps = {
+    data: slideAnswer,
+    slideQuestions: slideQuestions,
+  }
+
   switch (type) {
     case SLIDE_TYPES?.FIRST: 
-      return <FirstSlide data={slideAnswer} slideQuestions={slideQuestions} />;
+      return <FirstSlide {...slideProps} />;
     case SLIDE_TYPES?.AUDITRIUM:
-      return <AuditoriumSlide
-      desc={answers[1][1]["segments_short_description"]}
-      list={answers[1][0]["audience_segments"].map(function(v, index){ return { desc: v, index: index }; })}
-  ></AuditoriumSlide>;
+      return <AuditoriumSlide {...slideProps} />;
     case SLIDE_TYPES?.PROBLEM:
       return <ProblemSlide title={"Проблема: " + answers[2][0]["problem"]}
       titleList={answers[2][1]["problem_details"].map(function(v, index){ return { desc: v, index: index }; })}
