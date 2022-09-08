@@ -1,7 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './controls/Button';
-import SlidesCont from "./SlidesContainer";
 import { DefineSlide } from './slides/DefineSlide';
 import scenarios from '../configs/scenarios';
 
@@ -17,7 +16,7 @@ const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 16px 16px 40px;
-  background: white;
+  background: #f9f9f9;
 `;
 
 const Content = styled.div`
@@ -58,6 +57,27 @@ const CarouselCustomWrapper = styled.div`
   flex-direction: column;
 `;
 
+const CarouselPreviewWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: auto;
+  overflow-y: hidden;
+  width: 100%;
+  padding: 5px 0;
+`;
+
+const CarouselPreviewItem = styled.div`
+  width: 125px;
+  height: 75px;
+  display: flex;
+  flex-shrink: 0;
+  margin-right: 10px; 
+  box-shadow: 0px 2px 4px rgba(107, 115, 137, 0.2);
+  border-radius: 16px;
+  font-size: 5px;
+`;
+
 const MyButton = styled(Button)`
   width: 90%;
   max-width: 315px;
@@ -71,24 +91,36 @@ const MyButton = styled(Button)`
 `;
 
 function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) {
-  const currentType = useMemo(() => scenarios[scenarioId]?.steps[сurrentStep]?.slideType, [scenarioId, сurrentStep]);
+
+  const [activeSlide, setActiveSlide] = useState(сurrentStep);
 
   return (
     <Wrap>
       <Content>
         <Title>Презентация по итогу {сurrentStep + 1}-й секции</Title>
         <CarouselCustomWrapper>       
-          <Carousel selectedItem={сurrentStep} showStatus={false}>
+          <Carousel selectedItem={activeSlide} showStatus={false} showIndicators={false}>
             {answers?.map((item, itemIndex) => {
               const slideType = scenarios[scenarioId]?.steps[itemIndex]?.slideType;
+
               return (
                 <Window>
                   <DefineSlide answers={answers} type={slideType} />
                 </Window>
               )
             })}
-          
           </Carousel>
+          <CarouselPreviewWrapper>
+            {answers?.map((item, itemIndex) => {
+              const slideType = scenarios[scenarioId]?.steps[itemIndex]?.slideType;
+
+              return (
+                <CarouselPreviewItem onClick={() => setActiveSlide(itemIndex)}>
+                  <DefineSlide answers={answers} type={slideType} />
+                </CarouselPreviewItem>
+              )
+            })} 
+          </CarouselPreviewWrapper>       
         </CarouselCustomWrapper>
         <MyButton onClick={handleChange}>Вернуться к созданию</MyButton>
       </Content>
