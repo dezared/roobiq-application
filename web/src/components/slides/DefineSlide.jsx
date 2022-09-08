@@ -30,7 +30,7 @@ export const DefineSlide = ({slideQuestions, type, answers, slideIndex}) => {
 
   switch (type) {
     case SLIDE_TYPES?.FIRST: 
-      return <FirstSlide data={slideAnswer} slideQuestions={slideQuestions} title={answers[slideIndex][0]["project_name"]} desc={answers[slideIndex][1]["project_description"]} />;
+      return <FirstSlide data={slideAnswer} slideQuestions={slideQuestions} />;
     case SLIDE_TYPES?.AUDITRIUM:
       return <AuditoriumSlide
       desc={answers[1][1]["segments_short_description"]}
