@@ -5,6 +5,11 @@ import SlidesCont from "./SlidesContainer";
 import { DefineSlide } from './slides/DefineSlide';
 import scenarios from '../configs/scenarios';
 
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+
+import "../styles/utils.css";
+
 const Wrap = styled.div`
   width: 100%;
   height: 100vh;
@@ -33,19 +38,24 @@ const Title = styled.h1`
   width: 90%;
   max-width: 315px;
   height: 10%;
+  margin-bottom: 20px;
 `;
 
 const Window = styled.div`
-  width: 90%;
-  position: absolute;
-  max-width: 315px;
-  height: 25%;
-  top: 20%;
+  width: 99%;
+  height: 98%;
   display: flex;
   justify-content: center;
   box-shadow: 0px 2px 4px rgba(107, 115, 137, 0.2);
   border-radius: 16px;
   font-size: 7px;
+`;
+
+const CarouselCustomWrapper = styled.div`
+  width: 100%;
+  display; flex;
+  flex: 1;
+  flex-direction: column;
 `;
 
 const MyButton = styled(Button)`
@@ -58,9 +68,6 @@ const MyButton = styled(Button)`
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 16px;
-  top: 80%;
-  position: absolute;
 `;
 
 function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) {
@@ -69,12 +76,21 @@ function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) 
   return (
     <Wrap>
       <Content>
-        <Title>Презентация по итогу одной из секций</Title>
-        <Window>
-          <DefineSlide answers={answers} type={currentType} />
-        </Window>
-        <SlidesCont />
-          <MyButton onClick={handleChange}>Вернуться к созданию</MyButton>
+        <Title>Презентация по итогу {сurrentStep + 1}-й секции</Title>
+        <CarouselCustomWrapper>       
+          <Carousel selectedItem={сurrentStep} showStatus={false}>
+            {answers?.map((item, itemIndex) => {
+              const slideType = scenarios[scenarioId]?.steps[itemIndex]?.slideType;
+              return (
+                <Window>
+                  <DefineSlide answers={answers} type={slideType} />
+                </Window>
+              )
+            })}
+          
+          </Carousel>
+        </CarouselCustomWrapper>
+        <MyButton onClick={handleChange}>Вернуться к созданию</MyButton>
       </Content>
     </Wrap>
   )
