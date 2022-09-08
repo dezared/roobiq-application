@@ -102,10 +102,11 @@ function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) 
           <Carousel selectedItem={activeSlide} showStatus={false} showIndicators={false}>
             {answers?.map((item, itemIndex) => {
               const slideType = scenarios[scenarioId]?.steps[itemIndex]?.slideType;
+              const slideQuestions = scenarios[scenarioId]?.steps[itemIndex]?.questions;
 
               return (
                 <Window>
-                  <DefineSlide answers={answers} type={slideType} />
+                  <DefineSlide slideQuestions={slideQuestions} slideIndex={itemIndex} answers={answers} type={slideType} />
                 </Window>
               )
             })}
@@ -113,10 +114,11 @@ function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) 
           <CarouselPreviewWrapper>
             {answers?.map((item, itemIndex) => {
               const slideType = scenarios[scenarioId]?.steps[itemIndex]?.slideType;
+              const slideQuestions = scenarios[scenarioId]?.steps[itemIndex]?.questions;
 
               return (
                 <CarouselPreviewItem onClick={() => setActiveSlide(itemIndex)}>
-                  <DefineSlide answers={answers} type={slideType} />
+                  <DefineSlide slideQuestions={slideQuestions} slideIndex={itemIndex} answers={answers} type={slideType} />
                 </CarouselPreviewItem>
               )
             })} 

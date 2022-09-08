@@ -149,7 +149,6 @@ function Chat() {
     }
     else {
       // END
-      console.log(answers)
     }
   };
 
@@ -168,8 +167,6 @@ function Chat() {
   const handleChangePresentationCompleteViewer = () => {
     setopenPresentationCompleteViewer(!openPresentationCompleteViewer)
  }
-
- console.log(scenarioId, chat);
 
   return (
     <Wrap>
@@ -201,7 +198,7 @@ function Chat() {
               onClose={handleClose}
             >
               <div>
-                <CheckPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChange} сurrentStep={stepIndex}></CheckPresentation>
+                <CheckPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChange} сurrentStep={stepIndex}/>
               </div>
             </Modal>
 
@@ -211,7 +208,7 @@ function Chat() {
               sx={{ overflow: "scroll" }}
             >
               <div>
-                <ViewPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChangePresentationCompleteViewer}></ViewPresentation>
+                <ViewPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChangePresentationCompleteViewer} />
               </div>
             </Modal>
           </div>

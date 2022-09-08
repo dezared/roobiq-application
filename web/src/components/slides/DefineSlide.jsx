@@ -13,7 +13,6 @@ import ProblemSlide from "./ProblemSlide";
 function encodeImageFileAsURL(file) {
   try
   {
-      console.log(file)
       var reader = new FileReader();
       reader.onloadend = function() {
         return reader.result;
@@ -25,10 +24,13 @@ function encodeImageFileAsURL(file) {
   }
 }
 
-export const DefineSlide = ({type, answers}) => {
+export const DefineSlide = ({slideQuestions, type, answers, slideIndex}) => {
+
+  const slideAnswer = answers[slideIndex];
+
   switch (type) {
     case SLIDE_TYPES?.FIRST: 
-      return <FirstSlide title={answers[0][0]["project_name"]} desc={answers[0][1]["project_description"]}></FirstSlide>;
+      return <FirstSlide data={slideAnswer} slideQuestions={slideQuestions} title={answers[slideIndex][0]["project_name"]} desc={answers[slideIndex][1]["project_description"]} />;
     case SLIDE_TYPES?.AUDITRIUM:
       return <AuditoriumSlide
       desc={answers[1][1]["segments_short_description"]}

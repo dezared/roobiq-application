@@ -79,7 +79,6 @@ const ImageDiv = styled.div`
 `;
 
 function TeamSlide({ title, people }) {
-  console.log(people)
   return (
     <SlideBox>
       <Title>{title}</Title>

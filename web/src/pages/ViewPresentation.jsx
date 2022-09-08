@@ -140,11 +140,11 @@ function ViewPresentation({ answers, scenarioId, handleChange })
     return (
         <Wrap>
           <Content>
-            {scenarios[scenarioId]?.steps.map((item) => {
+            {scenarios[scenarioId]?.steps.map((item, itemIndex) => {
                 const currentType = item.slideType;
                 return (
                     <Slide>
-                        <DefineSlide type={currentType} answers={answers} key={`SLIDE_${item}`} />
+                        <DefineSlide slideIndex={itemIndex} type={currentType} answers={answers} key={`SLIDE_${item}`} />
                     </Slide>
                 )
             })}

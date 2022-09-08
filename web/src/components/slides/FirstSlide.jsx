@@ -32,23 +32,29 @@ const Description = styled.p`
   color: #404041;
 `;
 
-function FirstSlide({ title, desc }) {
+function FirstSlide({ data, slideQuestions }) {
+  const [title, desc] = data;
+  const [titleID, descId] = slideQuestions;
+
+  const finalTitle = title[titleID?.id] || 'ROOBIQ';
+  const finalDesc = desc[descId?.id] || 'Конструктор презентаций с экономическими расчетами';
+
   return (
     <SlideBox>
-      <Title>{ title }</Title>
-      <Description>{ desc }</Description>
+      <Title>{ finalTitle }</Title>
+      <Description>{ finalDesc }</Description>
     </SlideBox>
   )
 }
 
 FirstSlide.propTypes = {
-  title: PropTypes.string,
-  desc: PropTypes.string,
+  data: PropTypes.array,
+  slideQuestions: PropTypes.array,
 }
 
 FirstSlide.defaultProps = {
-  title: 'ROOBIQ',
-  desc: 'Конструктор презентаций с экономическими расчетами',
+  data: [],
+  slideQuestions: [],
 }
 
 export default FirstSlide;

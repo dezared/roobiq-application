@@ -180,7 +180,6 @@ function TextArrayActionBlockForm({ formikParent, actionName, onChange, payload,
   const handleChange = useCallback((index) => (e, value) => {
     if(formikParent.values.item)
     {
-      console.log(formikParent.values.item[payload.connectWithParentByName]) 
       const arr = [...formikParent.values.item[payload.connectWithParentByName]];
       if (arr.length <= 0 || arr.length < index) {
         arr.push(e.target.value);

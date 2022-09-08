@@ -5,10 +5,6 @@ function FormApiValidator(error, actions) {
     var nameResponse = Object.keys(data).toString()
     var dataResponse = data[nameResponse]
 
-    console.log(nameResponse, dataResponse)
-
-    console.log(errorTypes[dataResponse])
-
     actions.setFieldError(nameResponse, errorTypes[dataResponse])
 }
 

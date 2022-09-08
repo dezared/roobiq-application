@@ -365,7 +365,6 @@ function ObjectArrayActionBlock({
     },
     validationSchema: getValidationSchema(payload.objectFields),
     onSubmit: (values) => {
-      console.log(values)
       onChange({ [actionName]: values.items });
       formik.resetForm();
       handleClose();

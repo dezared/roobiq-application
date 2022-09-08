@@ -94,7 +94,6 @@ function Login() {
     },
     validationSchema: loginValidationSchema,
     onSubmit: (values, actions) => {
-      console.log(actions)
       actions.setStatus(undefined);
       AuthService.login(values.email, values.password).then(
         (response) => {

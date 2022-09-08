@@ -72,7 +72,6 @@ const TableData = styled.td`
 `;
 
 function CompetitorsAndAlternatives({ title, massive, competitors, properties }) {
-  console.log(massive, competitors, properties)
   return (
     <SlideBox>
       <Title>{title}</Title>
@@ -84,7 +83,7 @@ function CompetitorsAndAlternatives({ title, massive, competitors, properties })
         </TableRow>
           {properties.map((row, index) => (
             <TableRow
-              key={console.log(massive[index])}
+              key={massive[index]}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
               <TableData>{row}</TableData>
