@@ -48,6 +48,7 @@ const Window = styled.div`
   box-shadow: 0px 2px 4px rgba(107, 115, 137, 0.2);
   border-radius: 16px;
   font-size: 7px;
+  background: white;
 `;
 
 const CarouselCustomWrapper = styled.div`
@@ -76,6 +77,7 @@ const CarouselPreviewItem = styled.div`
   box-shadow: 0px 2px 4px rgba(107, 115, 137, 0.2);
   border-radius: 16px;
   font-size: 5px;
+  background: white;
 `;
 
 const MyButton = styled(Button)`
