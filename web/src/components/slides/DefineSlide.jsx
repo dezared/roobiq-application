@@ -41,14 +41,7 @@ export const DefineSlide = ({slideQuestions, type, answers, slideIndex}) => {
     case SLIDE_TYPES?.PROBLEM:
       return <ProblemSlide {...slideProps} />;
     case SLIDE_TYPES?.SOLUTION: 
-      return <SolutionSlide title={answers[3][0]["product_feature"]}
-        solutionList={
-          answers[3][1]["audience_segments"].map(function(v, index) { return {
-               id: index,
-               SolutionItemIcon: index,
-               SolutionItemTitle: v.name,
-               SolutionItemList: { desc: v.description, index: index} 
-               }})}></SolutionSlide>;
+      return <SolutionSlide {...slideProps} />;
     case SLIDE_TYPES?.MARKET: 
       return <MarketSlide1 title={"Рынок: " + answers[4][0]["market_segments"].join(", ")}
       sources={answers[4][1]["market_tam"].source.concat(answers[4][2]["market_sam"].source, answers[4][3]["market_som"].source).split('').join(", ")}

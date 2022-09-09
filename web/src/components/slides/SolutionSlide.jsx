@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
+import BookIcon from '../../assets/icons/book.svg';
+import BrainIcon from '../../assets/icons/brain.svg';
+import PencilIcon from '../../assets/icons/pencil.svg';
 
 const SlideBox = styled.div`
   width: 100%;
@@ -39,12 +42,18 @@ const SolutionItem = styled.div`
   font-size: 1em;
 `;
 
+const SolutionItemWrap = styled.div`
+  display: flex;
+  align-items: center;
+  flex-basis:100%;
+  color: #fff;
+`;
+
 const SolutionItemIcon = styled.h2`
   top: 5%;
   //position: absolute;
   font-size: 1.7em;
   line-height: 1.8em;
-  color: #fff;
 `;
 
 const SolutionItemTitle = styled.h2`
@@ -56,42 +65,62 @@ const SolutionItemTitle = styled.h2`
   color: #FFFFFF;
 `;
 
-const SolutionItemList = styled.ol`
-  //position: absolute;
-  top: 60%;
-  list-style-type: disc;
-  list-style-position: inside;
-  font-size: 1.5em;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  align-items: stretch;
-  padding-left: 15%;
-  max-width: 70%;
-`;
 
-const SolutionItemLi = styled.li`
+const SolutionItemDesc = styled.div`
   font-weight: 300;
   line-height: 1.5em;
-  font-size: 0.5em;
+  font-size: 0.75em;
   color: #fff;
 `;
 
-function SolutionSlide({ title, solutionList }) {
+const SlideIcon = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+`;
+
+function SolutionSlide({ data, slideQuestions }) {
+  console.log(BookIcon);
+  const defaultData = [
+    {
+      name: 'Constructor',
+      description: 'ConstructorTitle',
+    },
+    {
+      name: 'Constructor',
+      description: 'ConstructorTitle',
+    },
+    {
+      name: 'Constructor',
+      description: 'ConstructorTitle',
+    },
+  ];
+
+  const [title, solutionList] = data;
+  const [titleId, solutionListId] = slideQuestions;
+
+  const finalTitle = title[titleId?.id] || 'Solution and product';
+  const finalSolutionList = solutionList[solutionListId?.id] || defaultData;
+
+  console.log(finalTitle, finalSolutionList);
+
+  const slideIcons = [PencilIcon, BrainIcon, BookIcon];
+
   return (
     <SlideBox>
-      <Title>{title}</Title>
+      <Title>{finalTitle}</Title>
       <SolutionList>
-        {solutionList.map((Sl) => (
-          <SolutionItem key={Sl.id}>
-            <SolutionItemIcon>{Sl.SolutionItemIcon}</SolutionItemIcon>
-            <SolutionItemTitle>{Sl.SolutionItemTitle}</SolutionItemTitle>
-            <SolutionItemList>
-              {Sl.SolutionItemList.desc.map((solLi) => <SolutionItemLi key={solLi}>{solLi}</SolutionItemLi>)}
-            </SolutionItemList>
-          </SolutionItem>
+        {finalSolutionList.map((item, itemIndex) => (
+          <SolutionItemWrap>
+            {itemIndex !== 0 && (
+              <>+</>
+            )}
+            <SolutionItem key={itemIndex}>
+              <SlideIcon src={slideIcons[itemIndex]}/>
+              <SolutionItemTitle>{item?.name}</SolutionItemTitle>
+              <SolutionItemDesc>{item?.description}</SolutionItemDesc>
+            </SolutionItem>
+          </SolutionItemWrap>
         ))}
       </SolutionList>
     </SlideBox>
@@ -99,64 +128,13 @@ function SolutionSlide({ title, solutionList }) {
 }
 
 SolutionSlide.propTypes = {
-  title: PropTypes.string,
-  solutionList: PropTypes.array,
-};
+  data: PropTypes.array,
+  slideQuestions: PropTypes.array,
+}
+
 SolutionSlide.defaultProps = {
-  title: 'Solution and product',
-  solutionList: [
-    {
-      SolutionItemIcon: '1',
-      SolutionItemTitle: 'Constructor',
-      SolutionItemList:
-        {
-          desc: [
-            'Четкая структура',
-            'Акцент на композиции, типографике и колористике',
-            'Нельзя испортить внешний вид',
-            'Экспорт в популярные форматы',
-            'Совместная работа в режиме реального времени',
-            'Интеграция с популярными сервисами',
-          ],
-          index: 1,
-        },
-          id: 1,
-    },
-    {
-      SolutionItemIcon: '1',
-      SolutionItemTitle: 'Constructor',
-      SolutionItemList:
-        {
-          desc: [
-            'Четкая структура',
-            'Акцент на композиции, типографике и колористике',
-            'Нельзя испортить внешний вид',
-            'Экспорт в популярные форматы',
-            'Совместная работа в режиме реального времени',
-            'Интеграция с популярными сервисами',
-          ],
-          index: 2,
-        },
-      id: 2,
-    },
-    {
-      SolutionItemIcon: '1',
-      SolutionItemTitle: 'Constructor',
-      SolutionItemList:
-        {
-          desc: [
-            'Четкая структура',
-            'Акцент на композиции, типографике и колористике',
-            'Нельзя испортить внешний вид',
-            'Экспорт в популярные форматы',
-            'Совместная работа в режиме реального времени',
-            'Интеграция с популярными сервисами',
-          ],
-          index: 3,
-        },
-      id: 2,
-    },
-  ],
-};
+  data: [],
+  slideQuestions: [],
+}
 
 export default SolutionSlide;
