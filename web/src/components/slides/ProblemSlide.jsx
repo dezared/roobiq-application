@@ -75,19 +75,27 @@ const TitleLi = styled.li`
 
 `;
 
-function AuditoriumSlide({ title, leftTitle, titleList }) {
+function ProblemSlide({ data, slideQuestions }) {
+
+  const [title, problemDetails, problemDesc] = data;
+  const  [titleId, problemDetailsId, problemDescId] = slideQuestions;
+
+  const finalTitle = "Проблема: " + title[titleId?.id];
+  const finalProblemDetails = problemDetails[problemDetailsId?.id];
+  const finalProblemDesc = problemDesc[problemDescId?.id];
+
   return (
     <SlideBox>
-      <Title>{ title }</Title>
+      <Title>{ finalTitle }</Title>
       <div>
         <LeftBlock>
           <LeftTitle>
-            { leftTitle }
+            { finalProblemDesc }
           </LeftTitle>
         </LeftBlock>
         <RightBlock>  
           <TitleList>
-            {titleList.map((tit) => <TitleLi key={tit.index}>{tit.desc}</TitleLi>)}
+            {finalProblemDetails.map((item, itemIndex) => <TitleLi key={itemIndex}>{item}</TitleLi>)}
           </TitleList>
         </RightBlock>
       </div>
@@ -95,20 +103,15 @@ function AuditoriumSlide({ title, leftTitle, titleList }) {
   )
 }
 
-AuditoriumSlide.propTypes = {
-  title: PropTypes.string,
-  leftTitle: PropTypes.string,
-  titleList: PropTypes.array,
+ProblemSlide.propTypes = {
+  data: PropTypes.array,
+  slideQuestions: PropTypes.array,
 }
 
-AuditoriumSlide.defaultProps = {
-  title: 'Проблема',
-  leftTitle: 'Плохие презентации',
-  titleList: [
-    {desc: 'We haven`t this skills', index: 1},
-    {desc: 'We haven`t this skills 2', index: 2},
-    {desc: 'We haven`t this skills 3', index: 3},
-  ],
-};
+ProblemSlide.defaultProps = {
+  data: [],
+  slideQuestions: [],
+}
 
-export default AuditoriumSlide;
+
+export default ProblemSlide;

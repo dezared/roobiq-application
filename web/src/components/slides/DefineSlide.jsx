@@ -39,9 +39,7 @@ export const DefineSlide = ({slideQuestions, type, answers, slideIndex}) => {
     case SLIDE_TYPES?.AUDITRIUM:
       return <AuditoriumSlide {...slideProps} />;
     case SLIDE_TYPES?.PROBLEM:
-      return <ProblemSlide title={"Проблема: " + answers[2][0]["problem"]}
-      titleList={answers[2][1]["problem_details"].map(function(v, index){ return { desc: v, index: index }; })}
-      leftTitle={answers[2][2]["problem_short_description"]}></ProblemSlide>;
+      return <ProblemSlide {...slideProps} />;
     case SLIDE_TYPES?.SOLUTION: 
       return <SolutionSlide title={answers[3][0]["product_feature"]}
         solutionList={
