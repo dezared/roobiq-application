@@ -8,7 +8,7 @@ export const SLIDE_TYPES = {
   COMPETITORS_SPLASH: 'CompetitorsSplashSlide',
   COMPETITORS_AND_ALTERNATIVES: 'CompetitorsAndAlternatives',
   DIFFERENCE: 'DifferenceSlide',
-  BUISNES: 'BuisnesModel',
+  BUSINESS: 'BusinessModel',
   TEAM: 'TeamSlide',
 }
 

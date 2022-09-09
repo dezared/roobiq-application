@@ -112,10 +112,12 @@ const UserFocus = styled.span`
   font-style: italic;
 `;
 
-function BuisnesModel({ title, headers, customers, movement, money, focus }) {
+function BusinessModel({ data, slideQuestions }) {
+
+  console.log(data, slideQuestions);
   return (
     <SlideBox>
-      <Title>{title}</Title>
+      {/* <Title>{title}</Title>
       <HeadCont>
         {headers.map((head) => <Head>{head}</Head>)}
       </HeadCont>
@@ -133,41 +135,19 @@ function BuisnesModel({ title, headers, customers, movement, money, focus }) {
       <BottomBlock>
         <BottomContentTitle>Фокус:</BottomContentTitle>
         <BottomContentText>На текущем этапе фокус на <UserFocus>{focus}</UserFocus></BottomContentText>
-      </BottomBlock>
+      </BottomBlock> */}
     </SlideBox>
   )
 }
 
-BuisnesModel.propTypes = {
-  title: PropTypes.string,
-  focus: PropTypes.string,
-  headers: PropTypes.array,
-  customers: PropTypes.array,
-  movement: PropTypes.array,
-  money: PropTypes.array,
+BusinessModel.propTypes = {
+  data: PropTypes.array,
+  slideQuestions: PropTypes.array,
 }
 
-BuisnesModel.defaultProps = {
-  title: 'Бизнес-модель',
-  focus: 'Product-Market Fit',
-  headers: [
-    'Клиент:',
-    'Продвижение:',
-    'Монетизация:',
-  ],
-  customers: [
-    'Студенты',
-    'Начинающие стартаперы',
-    'Преподаватели в школах и их ученики',
-  ],
-  movement: [
-    'Посев в комьюнити',
-    'Контент-маркетинг',
-  ],
-  money: [
-    'Пробный период 7 дней',
-    'Студенческий: 200 рублей/мес.',
-  ],
+BusinessModel.defaultProps = {
+  data: [],
+  slideQuestions: [],
 }
 
-export default BuisnesModel;
+export default BusinessModel;

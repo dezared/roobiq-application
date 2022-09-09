@@ -9,6 +9,7 @@ import MarketSlide1 from "./MarketSlide1";
 import SolutionSlide from "./SolutionSlide";
 import TeamSlide from "./TeamSlide";
 import ProblemSlide from "./ProblemSlide";
+import BusinessModel from "./BusinessModel";
 
 function encodeImageFileAsURL(file) {
   try
@@ -44,8 +45,10 @@ export const DefineSlide = ({slideQuestions, type, answers, slideIndex}) => {
       return <SolutionSlide {...slideProps} />;
     case SLIDE_TYPES?.MARKET: 
       return <MarketSlide1 {...slideProps} />;
+    case SLIDE_TYPES?.BUSINESS: 
+      return <BusinessModel {...slideProps} />;
     case SLIDE_TYPES?.COMPETITORS_SPLASH: 
-      return <CompetitorsSplashSlide></CompetitorsSplashSlide>;
+      return <CompetitorsSplashSlide />;
     case SLIDE_TYPES?.COMPETITORS_AND_ALTERNATIVES:
       return <CompetitorsAndAlternatives competitors={answers[5][1]["direct_competitors"].map(function(v, index) { return { id: index, name: v.name }})}
       properties={answers[5][0]["competitors_properties"]}

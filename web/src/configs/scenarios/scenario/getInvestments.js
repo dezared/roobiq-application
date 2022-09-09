@@ -302,7 +302,7 @@ export const getInvestments = {
     {
       id: 'business_model',
       name: 'Бизнес-модель',
-      slideType: SLIDE_TYPES?.BUISNES,
+      slideType: SLIDE_TYPES?.BUSINESS,
       questions: [
         {
           id: 'promotion_types',

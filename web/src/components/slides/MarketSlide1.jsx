@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
 
 
 const SlideBox = styled.div`
@@ -157,7 +156,7 @@ function MarketSlide1({ data, slideQuestions }) {
   const finalTam = tam[tamId?.id] || '90 billions';
   const finalSom = som[somId?.id] || '90 billions';
   const finalSam = sam[samId?.id] || '90 billions';
-  const sources =  finalTam.source.concat(finalSam.source, finalSom.source).split('').join(", ") || defaultSources;
+  const sources =  finalTam?.source?.concat(finalSam.source, finalSom.source).split('').join(", ") || defaultSources;
 
   const sectionDesc = (section) => {
     const descType = typeof section?.description; 
