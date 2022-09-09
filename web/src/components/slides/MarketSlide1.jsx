@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 
 
 const SlideBox = styled.div`
@@ -138,10 +139,42 @@ const NamingArrowWrapper = styled.div`
   }
 `;
 
-function MarketSlide1({ title, tam, sam, som, sources }) {
+function MarketSlide1({ data, slideQuestions }) {
+
+  const [title, tam, sam, som] = data;
+  const [titleId, tamId, samId, somId] = slideQuestions;
+
+  const defaultSources = [
+    'seed-db.com',
+    'gemconsorium.org', 
+    'Global Entrepreneurship Monitor', 
+    'ВШЭ', 
+    'firrma.ru', 
+    'Министерство экономического развития',
+  ];
+
+  const finatTitle = "Рынок: " + title[titleId?.id].join(", ") || 'Рынок: b2b';
+  const finalTam = tam[tamId?.id] || '90 billions';
+  const finalSom = som[somId?.id] || '90 billions';
+  const finalSam = sam[samId?.id] || '90 billions';
+  const sources =  finalTam.source.concat(finalSam.source, finalSom.source).split('').join(", ") || defaultSources;
+
+  const sectionDesc = (section) => {
+    const descType = typeof section?.description; 
+
+    switch (descType) {
+      case 'string':
+        return section?.description;
+      case 'object':
+        return section?.description?.map((item, indexIndex) => <Li key={indexIndex}>{item}</Li>);
+      default:
+        return null;
+    };
+  };
+
   return (
     <SlideBox>
-      <Title>{title}</Title>
+      <Title>{finatTitle}</Title>
       <TitlesContainer>
         <NamingArrowWrapper>
           <TAM>TAM</TAM>
@@ -150,7 +183,7 @@ function MarketSlide1({ title, tam, sam, som, sources }) {
           </svg></div>
         </NamingArrowWrapper>
         <List>
-          {tam.list.map((t) => <Li>{t}</Li>)}
+          {sectionDesc(finalTam)}
         </List>
 
         <NamingArrowWrapper>
@@ -160,7 +193,7 @@ function MarketSlide1({ title, tam, sam, som, sources }) {
           </svg></div>
         </NamingArrowWrapper>
         <List>
-          {sam.list.map((s) => <Li>{s}</Li>)}
+           {sectionDesc(finalSam)}
         </List>
         <NamingArrowWrapper>
           <SOM>SOM</SOM>
@@ -169,17 +202,17 @@ function MarketSlide1({ title, tam, sam, som, sources }) {
           </svg></div>
         </NamingArrowWrapper>
         <List>
-          {som.list.map((s) => <Li>{s}</Li>)}
+        {sectionDesc(finalSom)}
         </List>
       </TitlesContainer>
       <Sources>Источники: {sources}</Sources>
        
       <BiggestCircle>
-        <RightTitle>{tam.value}</RightTitle>
+        <RightTitle>{finalTam?.amount}</RightTitle>
         <MiddleCircle>
-          <RightTitle>{sam.value}</RightTitle>
+          <RightTitle>{finalSam?.amount}</RightTitle>
           <SmallestCircle>
-            <RightTitle>{som.value}</RightTitle>
+            <RightTitle>{finalSom?.amount}</RightTitle>
           </SmallestCircle>
         </MiddleCircle>
       </BiggestCircle>
@@ -189,44 +222,13 @@ function MarketSlide1({ title, tam, sam, som, sources }) {
 }
 
 MarketSlide1.propTypes = {
-  title: PropTypes.string,
-  tam: PropTypes.object,
-  sam: PropTypes.object,
-  som: PropTypes.object,
-  sources: PropTypes.array,
+  data: PropTypes.array,
+  slideQuestions: PropTypes.array,
 }
 
 MarketSlide1.defaultProps = {
-  title: 'Market b2b',
-  sources: [
-    'seed-db.com',
-    'gemconsorium.org', 
-    'Global Entrepreneurship Monitor', 
-    'ВШЭ', 
-    'firrma.ru', 
-    'Министерство экономического развития',
-  ],
-  tam: {
-    value: '90 billions',
-    list: [
-      'something',
-      'something vol.2'
-    ],
-  },
-  sam: {
-    value: '90 billions',
-    list: [
-      'something',
-      'something vol.2'
-    ],
-  },
-  som: {
-    value: '90 billions',
-    list: [
-      'something',
-      'something vol.2'
-    ],
-  },
+  data: [],
+  slideQuestions: [],
 }
 
 export default MarketSlide1;

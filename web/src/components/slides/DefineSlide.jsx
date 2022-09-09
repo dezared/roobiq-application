@@ -43,21 +43,7 @@ export const DefineSlide = ({slideQuestions, type, answers, slideIndex}) => {
     case SLIDE_TYPES?.SOLUTION: 
       return <SolutionSlide {...slideProps} />;
     case SLIDE_TYPES?.MARKET: 
-      return <MarketSlide1 title={"Рынок: " + answers[4][0]["market_segments"].join(", ")}
-      sources={answers[4][1]["market_tam"].source.concat(answers[4][2]["market_sam"].source, answers[4][3]["market_som"].source).split('').join(", ")}
-      tam={{
-          value: answers[4][1]["market_tam"].amount,
-          list: answers[4][1]["market_tam"].description
-      }}
-      sam={{
-          value: answers[4][2]["market_sam"].amount,
-          list: answers[4][2]["market_sam"].description
-      }}
-      som={{
-          value: answers[4][3]["market_som"].amount,
-          list: answers[4][3]["market_som"].description
-      }}
-      ></MarketSlide1>;
+      return <MarketSlide1 {...slideProps} />;
     case SLIDE_TYPES?.COMPETITORS_SPLASH: 
       return <CompetitorsSplashSlide></CompetitorsSplashSlide>;
     case SLIDE_TYPES?.COMPETITORS_AND_ALTERNATIVES:
