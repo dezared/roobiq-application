@@ -20,7 +20,7 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 16px 40px;
+  padding: 16px 16px;
 `;
 
 const Content = styled.div`

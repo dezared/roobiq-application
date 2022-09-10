@@ -15,7 +15,7 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 16px 40px;
+  padding: 16px 16px;
   background: #f9f9f9;
 `;
 
@@ -150,21 +150,23 @@ function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) 
               )
             })}
           </Carousel>
-          <CarouselPreviewWrapper>
-            {answers?.map((item, itemIndex) => {
-              const slideType = scenarios[scenarioId]?.steps[itemIndex]?.slideType;
-              const slideQuestions = scenarios[scenarioId]?.steps[itemIndex]?.questions;
+          {answers.length > 1 && (
+            <CarouselPreviewWrapper>
+              {answers?.map((item, itemIndex) => {
+                const slideType = scenarios[scenarioId]?.steps[itemIndex]?.slideType;
+                const slideQuestions = scenarios[scenarioId]?.steps[itemIndex]?.questions;
 
-              return (
-                <CarouselPreviewItemWrapper>
-                  <CarouselPreviewItem onClick={() => setActiveSlide(itemIndex)}>
-                    <DefineSlide slideQuestions={slideQuestions} slideIndex={itemIndex} answers={answers} type={slideType} />
-                  </CarouselPreviewItem>
-                  <CarouselPreviewItemNumber>{itemIndex + 1}</CarouselPreviewItemNumber>
-                </CarouselPreviewItemWrapper>
-              )
-            })} 
-          </CarouselPreviewWrapper>       
+                return (
+                  <CarouselPreviewItemWrapper>
+                    <CarouselPreviewItem onClick={() => setActiveSlide(itemIndex)}>
+                      <DefineSlide slideQuestions={slideQuestions} slideIndex={itemIndex} answers={answers} type={slideType} />
+                    </CarouselPreviewItem>
+                    <CarouselPreviewItemNumber>{itemIndex + 1}</CarouselPreviewItemNumber>
+                  </CarouselPreviewItemWrapper>
+                )
+              })} 
+            </CarouselPreviewWrapper>   
+          )}    
         </CarouselCustomWrapper>
         <MyButton onClick={handleChange}>Вернуться к созданию</MyButton>
       </Content>
