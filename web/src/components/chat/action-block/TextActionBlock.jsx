@@ -70,8 +70,15 @@ function TextActionBlock({ actionName, onChange }) {
     formik.handleSubmit();
   }, [formik]);
 
+  const onKeyDown = useCallback((e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      formik.handleSubmit();
+    }
+  }, [formik]);
+
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} onKeyDown={onKeyDown}>
       <Container>
         <Textarea
           placeholder="Ваш ответ"
