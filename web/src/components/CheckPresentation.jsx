@@ -40,7 +40,7 @@ const Title = styled.h1`
   margin-bottom: 20px;
 `;
 
-const Window = styled.div`
+const CarouselItem = styled.div`
   width: 99%;
   height: 98%;
   display: flex;
@@ -49,6 +49,22 @@ const Window = styled.div`
   border-radius: 16px;
   font-size: 7px;
   background: white;
+  margin-bottom: 16px;
+`;
+
+const CarouselItemNumber = styled.span`
+  font-size: 16px;
+  color: #9191A1;
+`;
+
+const CarouselItemWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 4px;
+
 `;
 
 const CarouselCustomWrapper = styled.div`
@@ -64,13 +80,14 @@ const CarouselPreviewWrapper = styled.div`
   flex-wrap: nowrap;
   overflow: auto;
   overflow-y: hidden;
-  width: 100%;
+  width: auto;
   padding: 5px 0;
+  margin-top: 30px;
 `;
 
 const CarouselPreviewItem = styled.div`
-  width: 125px;
-  height: 75px;
+  width: 325px;
+  height: 200px;
   display: flex;
   flex-shrink: 0;
   margin-right: 10px; 
@@ -78,7 +95,24 @@ const CarouselPreviewItem = styled.div`
   border-radius: 16px;
   font-size: 5px;
   background: white;
+  transform: scale(.4);
+  margin: -60px -80px -60px -95px;
+  `;
+
+const CarouselPreviewItemWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 `;
+
+const CarouselPreviewItemNumber = styled.span`
+  font-size: 12px;
+  color: #9191A1;
+  padding-right: 15px;
+  margin: 8px 0;
+`;
+
 
 const MyButton = styled(Button)`
   width: 90%;
@@ -99,17 +133,20 @@ function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) 
   return (
     <Wrap>
       <Content>
-        <Title>Презентация по итогу {сurrentStep + 1}-й секции</Title>
+        <Title>Презентация по итогу <br/> {сurrentStep + 1}-й секции</Title>
         <CarouselCustomWrapper>       
-          <Carousel selectedItem={activeSlide} showStatus={false} showIndicators={false}>
+          <Carousel selectedItem={activeSlide} showStatus={false} showIndicators={false} showThumbs={false}>
             {answers?.map((item, itemIndex) => {
               const slideType = scenarios[scenarioId]?.steps[itemIndex]?.slideType;
               const slideQuestions = scenarios[scenarioId]?.steps[itemIndex]?.questions;
 
               return (
-                <Window>
-                  <DefineSlide slideQuestions={slideQuestions} slideIndex={itemIndex} answers={answers} type={slideType} />
-                </Window>
+                <CarouselItemWrapper>
+                  <CarouselItem>
+                    <DefineSlide slideQuestions={slideQuestions} slideIndex={itemIndex} answers={answers} type={slideType} />
+                  </CarouselItem>
+                  <CarouselItemNumber>{itemIndex + 1}</CarouselItemNumber>
+                </CarouselItemWrapper>
               )
             })}
           </Carousel>
@@ -119,9 +156,12 @@ function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) 
               const slideQuestions = scenarios[scenarioId]?.steps[itemIndex]?.questions;
 
               return (
-                <CarouselPreviewItem onClick={() => setActiveSlide(itemIndex)}>
-                  <DefineSlide slideQuestions={slideQuestions} slideIndex={itemIndex} answers={answers} type={slideType} />
-                </CarouselPreviewItem>
+                <CarouselPreviewItemWrapper>
+                  <CarouselPreviewItem onClick={() => setActiveSlide(itemIndex)}>
+                    <DefineSlide slideQuestions={slideQuestions} slideIndex={itemIndex} answers={answers} type={slideType} />
+                  </CarouselPreviewItem>
+                  <CarouselPreviewItemNumber>{itemIndex + 1}</CarouselPreviewItemNumber>
+                </CarouselPreviewItemWrapper>
               )
             })} 
           </CarouselPreviewWrapper>       
