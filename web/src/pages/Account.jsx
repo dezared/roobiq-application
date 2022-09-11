@@ -140,16 +140,18 @@ function Account() {
             <Content>
 
             <Header>
+                
                 <Logo className="splash_logotype" src={logoStartPage} alt="Roobiq Logo" />
                 <CompanyName>
                     ROOB
                     <CompanyNameEnd>IQ</CompanyNameEnd>
                 </CompanyName>
                 <IconButton><AccountCircleIcon fontSize="large" color="darkGrey" width="40px" /></IconButton>
+            
             </Header>
 
                 <NameCont>
-                    <Name>Артём</Name>
+                    <Name>Артем</Name>
                     <Name>Дербышев</Name>
                     <ChangeName>Изменить данные</ChangeName>
                 </NameCont>
