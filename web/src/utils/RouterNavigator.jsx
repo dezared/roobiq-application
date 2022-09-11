@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import history from '../redux/store';
 
 import '../styles/utils.css';
@@ -12,7 +12,6 @@ import Chat from '../pages/Chat';
 import ScenarioSelection from '../pages/ScenarioSelection';
 import ViewPresentation from '../pages/ViewPresentation';
 
-
 function RouterNavigator() {
   const user = JSON.parse(localStorage.getItem('userAuthorizationToken'));
 
@@ -21,7 +20,7 @@ function RouterNavigator() {
       <Switch>
         { user && user.token? (
           <>
-            {/* <Redirect to="/" /> */}
+            <Redirect to="/" />
             <Route path="/" exact><Main /></Route>
             <Route path="/constructor" exact><ScenarioSelection /></Route>
             <Route path="/constructor/:scenarioId" exact><Chat /></Route>
@@ -30,7 +29,7 @@ function RouterNavigator() {
           </>
         ):(
           <>
-            {/* <Redirect to="/login" /> */}
+            <Redirect to="/login" />
             <Route path="/login" exact><Login /></Route>
             <Route path="/registration" exact><Registration /></Route>
           </>
