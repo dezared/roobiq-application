@@ -85,7 +85,7 @@ function Main() {
           ROOB
           <CompanyNameEnd>IQ</CompanyNameEnd>
         </CompanyName>
-        <IconButton><AccountCircleIcon fontSize="large" color="darkGrey" width="40px" /></IconButton>
+        <IconButton component={Link} to="/account"><AccountCircleIcon fontSize="large" color="darkGrey" width="40px" /></IconButton>
       </Header>
 
 
