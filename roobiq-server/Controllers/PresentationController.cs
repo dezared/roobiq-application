@@ -2,6 +2,7 @@
 using roobiq_server.Data.Entity;
 using roobiq_server.Model.Presentation;
 using roobiq_server.Repository.Presentation;
+using roobiq_server.Repository.User;
 
 namespace roobiq_server.Controllers
 {
@@ -10,10 +11,12 @@ namespace roobiq_server.Controllers
     public class PresentationController : ControllerBase
     {
         private IPresentationRepository _presentationService;
+        private IUserRepository _userRepository;
 
-        public PresentationController(IPresentationRepository presentationService)
+        public PresentationController(IPresentationRepository presentationService, IUserRepository userRepository)
         {
             this._presentationService = presentationService;
+            this._userRepository = userRepository;
         }
 
         [HttpGet("allpresentation/{userId}")]
@@ -26,8 +29,16 @@ namespace roobiq_server.Controllers
         [HttpPut("createpresentation")]
         public ActionResult<List<PresentationEntity>> CreatePresentations([FromBody] CreatePresentationModel model)
         {
+            var user = _userRepository.GetSingle(u => u.Id == model.OwnerUserId);
+
+            if (user == null)
+                return BadRequest(new { systemException = "code_identity:UserNotFound" });
+
+            var id = Guid.NewGuid().ToString();
+
             var presentation = new PresentationEntity()
             {
+                Id = id,
                 DateTimeCreateTicks = DateTime.Now.Ticks,
                 DateTimeUpdateTicks = DateTime.Now.Ticks,
                 JsonPresentationText = model.JsonPresentationText,
@@ -35,8 +46,15 @@ namespace roobiq_server.Controllers
                 OwnerUserId = model.OwnerUserId
             };
 
+            if (user.PresentationList == null)
+                user.PresentationList = new List<string>();
+            user.PresentationList.Add(id);
+
             _presentationService.Add(presentation);
+            _userRepository.Update(user);
+            _userRepository.Commit();
             _presentationService.Commit();
+
             return Ok(presentation.Id);
         }
 

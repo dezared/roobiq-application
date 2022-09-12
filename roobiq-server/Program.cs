@@ -36,7 +36,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddEntityFrameworkNpgsql()
                 .AddDbContext<ApplicationContext>(options =>
                     options.UseNpgsql(
-                        //"Server=localhost;Database=roobiq-database;Username=postgres;Password=admin;Port=5432"
+                        //"Server=ec2-34-242-8-97.eu-west-1.compute.amazonaws.com;Database=d4du7qsgimpt3v;Username=zldpiyoxrtkcod;Password=6a4d1a1d591920a73d436a0340ecb61ec4e5d5ca4e2576e0cabced948539ea72;Port=5432"
                         Environment.GetEnvironmentVariable("BlogContext")
                     )
                 );
