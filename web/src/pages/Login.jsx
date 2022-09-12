@@ -78,6 +78,15 @@ const ButtonGroup = styled.div`
   align-items: center;
 `;
 
+const ResetPass = styled.span`
+  font-size: 13px;
+  color: #25A9E0;
+  text-decoration: undreline;
+  display: block;
+`;
+
+
+
 const LoginBtn = styled(Button)`
   &.MuiButton-root {
     padding-right: 30px;
@@ -142,6 +151,8 @@ function Login() {
           helperText={formik.touched.password && formik.errors.password}
           placeholder="Пароль"
         />
+
+        <ResetPass>Восстановить пароль</ResetPass>
 
         <ButtonGroup>
           <Button component={Link} variant="text" to="/registration">Создать аккаунт</Button>

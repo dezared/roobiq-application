@@ -29,12 +29,13 @@ const Content = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  overflow: hidden;
 `;
 const ChatBlock = styled(ChatBlockComponent)`
   width: 100%;
   margin-bottom: 32px;
-  overflow: hidden;
-  flex: 1;
+  overflow-y: auto;
 `;
 
 const BtnGroup = styled.div`

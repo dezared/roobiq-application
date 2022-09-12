@@ -12,6 +12,7 @@ import Chat from '../pages/Chat';
 import ScenarioSelection from '../pages/ScenarioSelection';
 import ViewPresentation from '../pages/ViewPresentation';
 import Account from '../pages/Account';
+import Settings from '../pages/Settings';
 
 function RouterNavigator() {
   const user = JSON.parse(localStorage.getItem('userAuthorizationToken'));
@@ -28,6 +29,7 @@ function RouterNavigator() {
             <Route path="/components" exact><Components /></Route>
             <Route path="/slides" exact><ViewPresentation /></Route>
             <Route path="/account" exact><Account /></Route>
+            <Route path="/settings" exact><Settings /></Route>
           </>
         ):(
           <>

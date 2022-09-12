@@ -23,6 +23,7 @@ const Content = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 const NameCont = styled.div`
@@ -31,8 +32,6 @@ const NameCont = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    position: absolute!important;
-    top: 14%;
     gap: 7px;
 `;
 
@@ -53,8 +52,6 @@ const ItemsWrap = styled(Stack)`
   max-width: 350px;
   height: 250px;
   margin-bottom: 20px;
-  position: absolute!important;
-  bottom: 10%;
 `;
 
 const Item = styled.div`
@@ -86,8 +83,7 @@ const Payment = styled.div`
     border: 1px solid #25A9E0;
     border-radius: 10px;
     font-size: 30px;
-    bottom: 52%;
-    position: absolute!important;
+    margin-top: 10px;
     color: #fff;
 `;
 
@@ -95,8 +91,7 @@ const Title = styled.h1`
     font-size: 25px;
     text-align: center;
     color: #25A9E0;
-    position: absolute!important;
-    bottom: 46%;
+    margin-top: 10px;
 `;
 
 const BtnGroup = styled.div`
@@ -104,9 +99,8 @@ const BtnGroup = styled.div`
   max-width: 350px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
-  position: absolute;
-  bottom: 20px;
+  margin-bottom: 20px;
+  gap: 5px;
 `;
 
 const Header = styled.header`
@@ -188,6 +182,7 @@ function Account() {
 
                 <BtnGroup>
                     <Button component={Link} to="/">На главную</Button>
+                    <Button component={Link} to="/settings">На стройку</Button>
                 </BtnGroup>
 
             </Content>
