@@ -1,28 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../components/controls/Button';
-import {Stack, IconButton} from '@mui/material';
-import DownloadIcon from '@mui/icons-material/Download';
-import DeleteIcon from '@mui/icons-material/Delete';
-import logoStartPage from "../images/splash_logotype.png";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Link} from "react-router-dom";
+import Header from '../components/Header';
+import ProfileIcon from '../assets/icons/profile.svg'; 
 
 const Wrap = styled.div`
-width: 100%;
-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 16px 16px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 16px;
 `;
 
 const Content = styled.div`
   width: 100%;
+  height: 100%;
   max-width: 350px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   overflow: hidden;
 `;
 
@@ -32,40 +32,12 @@ const NameCont = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 7px;
+    margin-bottom: 10px;
 `;
 
 const Name = styled.h2`
     font-size: 25px;
     font-weight: 800;
-`;
-
-const ChangeName = styled.span`
-    font-size: 17px;
-    font-weight: 400;
-    text-decoration: underline;
-    color: #25A9E0;
-`;
-
-const ItemsWrap = styled(Stack)`
-  width: 100%;
-  max-width: 350px;
-  height: 250px;
-  margin-bottom: 20px;
-`;
-
-const Item = styled.div`
-  background-color: #fff;
-  padding: 4px;
-  color: black;
-  width: 100%;
-  height: 50px;
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
-  justify-content: space-between;
 `;
 
 const Payment = styled.div`
@@ -87,12 +59,6 @@ const Payment = styled.div`
     color: #fff;
 `;
 
-const Title = styled.h1`
-    font-size: 25px;
-    text-align: center;
-    color: #25A9E0;
-    margin-top: 10px;
-`;
 
 const BtnGroup = styled.div`
   width: 100%;
@@ -103,89 +69,41 @@ const BtnGroup = styled.div`
   gap: 5px;
 `;
 
-const Header = styled.header`
-  width: 100%;
-  max-width: 350px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+const NameWrap = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 `;
 
-const Logo = styled.img`
-  width: 40px;
+const NameIcon = styled.img`
+    width: 75px;
+    height: 75px;
+    margin-right: 20px;
 `;
 
-const CompanyName = styled.span`
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
-  color: #2E3135;
-  white-space: nowrap;
-`;
 
-const CompanyNameEnd = styled.span`
-  color: #345CCE;
-`;
 
 function Account() {
     return(
         <Wrap>
+            <Header withAccount={false} />
             <Content>
-
-            <Header>
+                <NameWrap>
+                    <NameIcon src={ProfileIcon} />
+                    <NameCont>
+                        <Name>Артем</Name>
+                        <Name>Дербышев</Name>
+                    </NameCont>
+                </NameWrap>
                 
-                <Logo className="splash_logotype" src={logoStartPage} alt="Roobiq Logo" />
-                <CompanyName>
-                    ROOB
-                    <CompanyNameEnd>IQ</CompanyNameEnd>
-                </CompanyName>
-                <IconButton><AccountCircleIcon fontSize="large" color="darkGrey" width="40px" /></IconButton>
-            
-            </Header>
-
-                <NameCont>
-                    <Name>Артем</Name>
-                    <Name>Дербышев</Name>
-                    <ChangeName>Изменить данные</ChangeName>
-                </NameCont>
 
                 <Payment>Обновить план</Payment>
 
-                <Title>Мои презентации</Title>
-
-                <ItemsWrap>    
-                    <Item>
-                        <span>Презентация для Microsoft</span>
-                        <div>
-                        <IconButton><DownloadIcon color="darkGrey" /></IconButton>
-                        <IconButton><DeleteIcon color="darkGrey" /></IconButton>
-                        </div>
-                    </Item>
-                    
-                    <Item>
-                        <span>Презентация seed round</span>
-                        <div>
-                        <IconButton><DownloadIcon color="darkGrey" /></IconButton>
-                        <IconButton><DeleteIcon color="darkGrey" /></IconButton>
-                        </div>
-                    </Item>
-                    
-                    <Item>
-                        <span>Презентация для СБЕРА</span>
-                        <div>
-                        <IconButton><DownloadIcon color="darkGrey" /></IconButton>
-                        <IconButton><DeleteIcon color="darkGrey" /></IconButton>
-                        </div>
-                    </Item>
-                </ItemsWrap>
-
-                <BtnGroup>
-                    <Button component={Link} to="/">На главную</Button>
-                    <Button component={Link} to="/settings">На стройку</Button>
-                </BtnGroup>
-
             </Content>
+            <BtnGroup>
+                <Button component={Link} to="/">На главную</Button>
+                <Button component={Link} to="/settings">Настройки</Button>
+            </BtnGroup>
         </Wrap>
     )
 }

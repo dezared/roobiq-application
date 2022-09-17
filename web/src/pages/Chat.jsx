@@ -34,6 +34,7 @@ const Content = styled.div`
 `;
 const ChatBlock = styled(ChatBlockComponent)`
   width: 100%;
+  height: 100%;
   margin-bottom: 32px;
   overflow-y: auto;
 `;

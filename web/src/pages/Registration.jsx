@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import logoStartPage from '../images/splash_logotype.png';
 import TextInput from '../components/controls/TextInput';
 import Button from '../components/controls/Button';
 import { registrationValidationSchema } from '../configs/validations';
@@ -105,7 +104,7 @@ function Login() {
   return (
     <Wrap>
       <Form onSubmit={onSubmit}>
-        <Logo className="splash_logotype" src={logoStartPage} alt="Roobiq Logo" />
+        <Logo className="splash_logotype" src="/images/splash_logotype.png" alt="Roobiq Logo" />
         <Title>
           Регистрация
         </Title>
