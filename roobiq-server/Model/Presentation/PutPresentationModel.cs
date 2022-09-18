@@ -7,5 +7,6 @@
         public string? Name { get; set; }
         public long DateTimeCreateTicks { get; set; }
         public long DateTimeUpdateTicks { get; set; }
+        public string? ScenarioId { get; set; }
     }
 }

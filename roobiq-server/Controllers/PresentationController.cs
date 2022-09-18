@@ -43,7 +43,9 @@ namespace roobiq_server.Controllers
                 DateTimeUpdateTicks = DateTime.Now.Ticks,
                 JsonPresentationText = model.JsonPresentationText,
                 Name = model.Name,
-                OwnerUserId = model.OwnerUserId
+                OwnerUserId = model.OwnerUserId,
+                ScenarioId = model.ScenarioId,
+                Status = "status:working"
             };
 
             if (user.PresentationList == null)
@@ -66,6 +68,7 @@ namespace roobiq_server.Controllers
             presentation.Name = model.Name;
             presentation.JsonPresentationText = model.JsonPresentationText;
             presentation.DateTimeUpdateTicks = DateTime.Now.Ticks;
+            presentation.Status = model.Status;
 
             _presentationService.Update(presentation);
             _presentationService.Commit();

@@ -6,5 +6,6 @@
         public string? JsonPresentationText { get; set; }
         public string? Name { get; set; }
         public long DateTimeUpdateTicks { get; set; }
+        public string? Status { get; set; }
     }
 }

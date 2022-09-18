@@ -7,5 +7,7 @@
         public long DateTimeCreateTicks { get; set; }
         public long DateTimeUpdateTicks { get; set; }
         public string? OwnerUserId { get; set; }
+        public string? ScenarioId { get; set; }
+        public string? Status { get; set; }
     }
 }
