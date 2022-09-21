@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from '../components/Header/index';
+import TextInput from '../components/controls/TextInput';
+import Button from '../components/controls/Button';
 
 const Wrap = styled.div`
 width: 100%;
@@ -11,6 +14,20 @@ padding: 16px 16px;
 overflow: ;
 `;
 
+const MyButton = styled(Button)`
+  width: 90%;
+  max-width: 315px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: absolute!important;
+  bottom: 20px;
+`;
+
 const Content = styled.div`
   width: 100%;
   max-width: 350px;
@@ -19,16 +36,25 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
+const ChangeBlock = styled.h1` 
+    font-size: 30px;
+    text-align: center;
+    font-weight: 500;
+    color: #25A9E0;
+`;
+
+const MyTextInput = styled(TextInput)`
+    margin-top: 20px;
+`;
+
 function Settings() {
     return(
         <Wrap>
             <Content>
-                <h1>
-                    Some title
-                </h1>
-                <form action='#'>
-                    <input placeholder='Введите что-то'></input>
-                </form>
+                <Header />
+                <ChangeBlock>Изменить имя</ChangeBlock>
+                <MyTextInput placeholder="Введите новое имя"/>
+                <MyButton>Сохранить изменения</MyButton>
             </Content>
         </Wrap>
     )
