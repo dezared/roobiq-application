@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect, useMemo, useState, useRef
 } from 'react';
+import { useReactToPrint } from 'react-to-print';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom' ;
 import initScenarios from '../configs/scenarios';
@@ -170,6 +171,13 @@ function Chat() {
     setopenPresentationCompleteViewer(!openPresentationCompleteViewer)
  }
 
+
+  const componentRef = useRef();
+  const Example = () => {
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });};
+
   return (
     <Wrap>
       <Content>
@@ -187,7 +195,7 @@ function Chat() {
           <div>
             <BtnGroup>
               {stepIndex + 1 >= tabs.length ? (
-                <Button onClick={handleChangePresentationCompleteViewer}>Закончить создание</Button>
+                <Button onClick={function(event){ handleChangePresentationCompleteViewer(); Example() }} trigger={() => <button>Print this out!</button>}>Закончить создание</Button>
               ) : (
                 <>
                   <Button onClick={handleOpen}>Смотреть</Button>
@@ -210,7 +218,7 @@ function Chat() {
               sx={{ overflow: "scroll" }}
             >
               <div>
-                <ViewPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChangePresentationCompleteViewer} />
+                <ViewPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChangePresentationCompleteViewer} ref={componentRef} />
               </div>
             </Modal>
           </div>
