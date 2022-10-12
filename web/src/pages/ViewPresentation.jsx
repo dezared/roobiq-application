@@ -1,6 +1,7 @@
+import React from 'react';
 import { DefineSlide } from '../components/slides/DefineSlide';
 import scenarios from '../configs/scenarios';
-
+import { ReactToPrint } from 'react-to-print';
 import styled from 'styled-components';
 
 const Wrap = styled.div`
@@ -139,7 +140,15 @@ function ViewPresentation({ answers, scenarioId, handleChange })
 {
     return (
         <Wrap>
-          <Content>
+            <ReactToPrint 
+							trigger={()=> {
+								return <button>Print presentation</button>
+							}}
+							content= {()=>this.componentRef}
+							documentTitle='Presentation'
+							pageStyle="print"
+            />
+          <Content ref={el=>(this.componentRef=el)}>
             {scenarios[scenarioId]?.steps.map((item, itemIndex) => {
                 const currentType = item.slideType;
                 return (
