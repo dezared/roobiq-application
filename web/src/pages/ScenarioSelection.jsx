@@ -76,7 +76,7 @@ function ScenarioSelection() {
             onClick={onChooseScenario(item.numId)}
           >
             {item.name}
-            <NewDesc>{item?.numId == 2 && ' (В разработке)'}</NewDesc>
+            <NewDesc>{item?.numId == 1 && ' (В разработке)'}</NewDesc>
           </ListItemButton>
         ))}
       </GoalPanel>

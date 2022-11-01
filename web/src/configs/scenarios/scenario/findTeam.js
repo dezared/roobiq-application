@@ -43,11 +43,11 @@ export const findTeam = {
   },
   {
     id: 'problem',
-    name: 'Цель',
-    slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
+    name: 'Проблема',
+    slideType: SLIDE_TYPES?.PROBLEM,
     questions: [{
       id: 'problem',
-      question: 'Теперь нужно 1 тезисом сформулировать цель, которую преследует проект:',
+      question: 'Теперь нужно 1 тезисом сформулировать проблему, которую преследует проект:',
       answerType: ActionType.text,
     }, {
       id: 'problem_details',
@@ -252,50 +252,50 @@ export const findTeam = {
         },
       }],
   },
-  {
-    id: 'competitors',
-    name: 'Конкуренты',
-    slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
-    questions: [
-      {
-        id: 'competitors_properties',
-        question: 'Далее опиши чем твой проект лучше конкурентов...',
-        answerType: ActionType.textArray,
-        payload: {
-          title: 'Свойства конкурентов',
-          description: 'Сформулируй функциональные свойства, по которым будем сравнить твое решение (или несколько решений) с конкурентами для демонстрации преимуществ.',
-          itemName: 'Свойство',
-          btnText: 'Описать',
-        },
-      }, {
-        id: 'direct_competitors',
-        question: 'Напиши основных ПРЯМЫХ конкурентов (делают тоже самое, что и ты и их ЦА такая же как у тебя)',
-        answerType: ActionType.objectArray,
-        payload: {
-          title: 'Прямые конкуренты',
-          description: 'Прямые конкуренты делают тоже самое, что и ты и их ЦА такая же как у тебя. Также отметь свойства, которые есть у конкурентов.',
-          itemName: 'Конкурент',
-          btnText: 'Прописать прямых',
-          minElements: 3,
+  // {
+  //   id: 'competitors',
+  //   name: 'Конкуренты',
+  //   slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
+  //   questions: [
+  //     {
+  //       id: 'competitors_properties',
+  //       question: 'Далее опиши чем твой проект лучше конкурентов...',
+  //       answerType: ActionType.textArray,
+  //       payload: {
+  //         title: 'Свойства конкурентов',
+  //         description: 'Сформулируй функциональные свойства, по которым будем сравнить твое решение (или несколько решений) с конкурентами для демонстрации преимуществ.',
+  //         itemName: 'Свойство',
+  //         btnText: 'Описать',
+  //       },
+  //     }, {
+  //       id: 'direct_competitors',
+  //       question: 'Напиши основных ПРЯМЫХ конкурентов (делают тоже самое, что и ты и их ЦА такая же как у тебя)',
+  //       answerType: ActionType.objectArray,
+  //       payload: {
+  //         title: 'Прямые конкуренты',
+  //         description: 'Прямые конкуренты делают тоже самое, что и ты и их ЦА такая же как у тебя. Также отметь свойства, которые есть у конкурентов.',
+  //         itemName: 'Конкурент',
+  //         btnText: 'Прописать прямых',
+  //         minElements: 3,
 
-          objectFields: [{
-            name: 'name',
-            label: 'Конкурент',
-            placeholder: 'Название печатать тут',
-            type: ActionType.text,
-          }, {
-            name: 'properties',
-            label: 'Свойства',
-            type: ActionType.checkboxArray,
-            sourceField: 'competitors_properties',
-          }],
-        },
-      }, {
-        id: 'competitors_difference',
-        question: 'Теперь нужно прописать отличия, чтобы отстроиться от конкурентов и подчеркнуть то самое важное отличие:',
-        answerType: ActionType.text,
-      }],
-  },
+  //         objectFields: [{
+  //           name: 'name',
+  //           label: 'Конкурент',
+  //           placeholder: 'Название печатать тут',
+  //           type: ActionType.text,
+  //         }, {
+  //           name: 'properties',
+  //           label: 'Свойства',
+  //           type: ActionType.checkboxArray,
+  //           sourceField: 'competitors_properties',
+  //         }],
+  //       },
+  //     }, {
+  //       id: 'competitors_difference',
+  //       question: 'Теперь нужно прописать отличия, чтобы отстроиться от конкурентов и подчеркнуть то самое важное отличие:',
+  //       answerType: ActionType.text,
+  //     }],
+  // },
   {
     id: 'team',
     name: 'Команда',
@@ -336,10 +336,12 @@ export const findTeam = {
               deletable: true,
               addable: true
             }
-          }, {
-            name: 'image',
-            type: ActionType.image,
-          }],
+          }, 
+          // {
+          //   name: 'image',
+          //   type: ActionType.image,
+          // }
+        ],
         },
       },
     ],
