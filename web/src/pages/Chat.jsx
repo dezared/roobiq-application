@@ -162,16 +162,6 @@ function Chat() {
     setOpen(!open)
  }
 
- const [openPresentationCompleteViewer, setopenPresentationCompleteViewer] = React.useState(false);
-  const handleOpenPresentationCompleteViewer = () => handleChangePresentationCompleteViewer(true);
-  const handleClosePresentationCompleteViewer = () => handleChangePresentationCompleteViewer(false);
-
-  const handleChangePresentationCompleteViewer = () => {
-    setopenPresentationCompleteViewer(!openPresentationCompleteViewer)
- }
-
-
-
   return (
     <Wrap>
       <Content>
@@ -189,7 +179,7 @@ function Chat() {
           <div>
             <BtnGroup>
               {stepIndex + 1 >= tabs.length ? (
-                <Button onClick={handleChangePresentationCompleteViewer()}>Закончить создание</Button>
+                <Button onClick={handleOpen}>Закончить создание</Button>
               ) : (
                 <>
                   <Button onClick={handleOpen}>Смотреть</Button>
@@ -203,16 +193,6 @@ function Chat() {
             >
               <div>
                 <CheckPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChange} сurrentStep={stepIndex}/>
-              </div>
-            </Modal>
-
-            <Modal
-              open={openPresentationCompleteViewer}
-              onClose={handleClosePresentationCompleteViewer}
-              sx={{ overflow: "scroll" }}
-            >
-              <div>
-                <ViewPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChangePresentationCompleteViewer} />
               </div>
             </Modal>
           </div>

@@ -40,8 +40,8 @@ function Header({ withAccount = true }) {
         <CompanyNameEnd>IQ</CompanyNameEnd>
       </CompanyName>
       {withAccount ? (
-        <IconButton component={Link} to="/account"><AccountCircleIcon fontSize="large" color="darkGrey" width="40px" /></IconButton>   
-      ) : <IconButton component={Link} to="/account"><ExitToAppIcon fontSize="large" color="darkGrey" width="10px" /></IconButton>   }
+        <IconButton component={Link} to="/"><AccountCircleIcon fontSize="large" color="darkGrey" width="40px" /></IconButton>   
+      ) : <IconButton component={Link} to="/"><ExitToAppIcon fontSize="large" color="darkGrey" width="10px" /></IconButton>   }
     </HeaderWrapper>
   )
 };

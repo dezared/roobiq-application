@@ -209,96 +209,96 @@ export const getInvestments = {
           },
         }],
     },
-    {
-      id: 'competitors',
-      name: 'Конкуренты',
-      slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
-      questions: [
-        {
-          id: 'competitors_properties',
-          question: 'Далее опиши чем твой продукт лучше конкурентов...',
-          answerType: ActionType.textArray,
-          payload: {
-            title: 'Свойства конкурентов',
-            description: 'Сформулируй функциональные свойства, по которым будем сравнить твой продукт с конкурентами для демонстрации преимуществ.',
-            itemName: 'Свойство',
-            btnText: 'Описать',
-          },
-        }, {
-          id: 'direct_competitors',
-          question: 'Напиши основных ПРЯМЫХ конкурентов (делают тоже самое, что и ты и их ЦА такая же как у тебя)',
-          answerType: ActionType.objectArray,
-          payload: {
-            title: 'Прямые конкуренты',
-            description: 'Прямые конкуренты делают тоже самое, что и ты и их ЦА такая же как у тебя. Также отметь свойства, которые есть у конкурентов.',
-            itemName: 'Конкурент',
-            btnText: 'Прописать прямых',
-            minElements: 3,
+    // {
+    //   id: 'competitors',
+    //   name: 'Конкуренты',
+    //   slideType: SLIDE_TYPES?.COMPETITORS_SPLASH,
+    //   questions: [
+    //     {
+    //       id: 'competitors_properties',
+    //       question: 'Далее опиши чем твой продукт лучше конкурентов...',
+    //       answerType: ActionType.textArray,
+    //       payload: {
+    //         title: 'Свойства конкурентов',
+    //         description: 'Сформулируй функциональные свойства, по которым будем сравнить твой продукт с конкурентами для демонстрации преимуществ.',
+    //         itemName: 'Свойство',
+    //         btnText: 'Описать',
+    //       },
+    //     }, {
+    //       id: 'direct_competitors',
+    //       question: 'Напиши основных ПРЯМЫХ конкурентов (делают тоже самое, что и ты и их ЦА такая же как у тебя)',
+    //       answerType: ActionType.objectArray,
+    //       payload: {
+    //         title: 'Прямые конкуренты',
+    //         description: 'Прямые конкуренты делают тоже самое, что и ты и их ЦА такая же как у тебя. Также отметь свойства, которые есть у конкурентов.',
+    //         itemName: 'Конкурент',
+    //         btnText: 'Прописать прямых',
+    //         minElements: 3,
 
-            objectFields: [{
-              name: 'name',
-              label: 'Конкурент',
-              placeholder: 'Название печатать тут',
-              type: ActionType.text,
-            }, {
-              name: 'properties',
-              label: 'Свойства',
-              type: ActionType.checkboxArray,
-              sourceField: 'competitors_properties',
-            }],
-          },
-        }, {
-          id: 'indirect_competitors',
-          question: 'Напиши основных КОСВЕННЫХ конкурентов (компании близкие к твоему рынку, но главный бизнес-процесс основан на других продуктах, потенциально ЦА может решить свою проблему хотя бы частично через них)',
-          answerType: ActionType.objectArray,
-          payload: {
-            title: 'Косвенные конкуренты',
-            description: 'Косвенные (Компании близкие к твоему рынку, но главный бизнес-процесс основан на других продуктах, потенциально ЦА может решить свою проблему хотя бы частично через них). Также отметь свойства, которые есть у конкурентов.',
-            itemName: 'Конкурент',
-            btnText: 'Прописать прямых',
-            minElements: 2,
+    //         objectFields: [{
+    //           name: 'name',
+    //           label: 'Конкурент',
+    //           placeholder: 'Название печатать тут',
+    //           type: ActionType.text,
+    //         }, {
+    //           name: 'properties',
+    //           label: 'Свойства',
+    //           type: ActionType.checkboxArray,
+    //           sourceField: 'competitors_properties',
+    //         }],
+    //       },
+    //     }, {
+    //       id: 'indirect_competitors',
+    //       question: 'Напиши основных КОСВЕННЫХ конкурентов (компании близкие к твоему рынку, но главный бизнес-процесс основан на других продуктах, потенциально ЦА может решить свою проблему хотя бы частично через них)',
+    //       answerType: ActionType.objectArray,
+    //       payload: {
+    //         title: 'Косвенные конкуренты',
+    //         description: 'Косвенные (Компании близкие к твоему рынку, но главный бизнес-процесс основан на других продуктах, потенциально ЦА может решить свою проблему хотя бы частично через них). Также отметь свойства, которые есть у конкурентов.',
+    //         itemName: 'Конкурент',
+    //         btnText: 'Прописать прямых',
+    //         minElements: 2,
 
-            objectFields: [{
-              name: 'name',
-              label: 'Конкурент',
-              placeholder: 'Название печатать тут',
-              type: ActionType.text,
-            }, {
-              name: 'properties',
-              label: 'Свойства',
-              type: ActionType.checkboxArray,
-              sourceField: 'competitors_properties',
-            }],
-          },
-        }, {
-          id: 'alternative_competitors',
-          question: 'Напиши основных АЛЬТЕРНАТИВНЫХ конкурентов (компании вообще не из твоего рынка, но через их продукты можно закрыть проблему)',
-          answerType: ActionType.objectArray,
-          payload: {
-            title: 'Альтернативные конкуренты',
-            description: 'Альтернативы (компании вообще не из твоего рынка, но через их продукты можно закрыть проблему).. Также отметь свойства, которые есть у конкурентов.',
-            itemName: 'Конкурент',
-            btnText: 'Прописать прямых',
-            minElements: 1,
+    //         objectFields: [{
+    //           name: 'name',
+    //           label: 'Конкурент',
+    //           placeholder: 'Название печатать тут',
+    //           type: ActionType.text,
+    //         }, {
+    //           name: 'properties',
+    //           label: 'Свойства',
+    //           type: ActionType.checkboxArray,
+    //           sourceField: 'competitors_properties',
+    //         }],
+    //       },
+    //     }, {
+    //       id: 'alternative_competitors',
+    //       question: 'Напиши основных АЛЬТЕРНАТИВНЫХ конкурентов (компании вообще не из твоего рынка, но через их продукты можно закрыть проблему)',
+    //       answerType: ActionType.objectArray,
+    //       payload: {
+    //         title: 'Альтернативные конкуренты',
+    //         description: 'Альтернативы (компании вообще не из твоего рынка, но через их продукты можно закрыть проблему).. Также отметь свойства, которые есть у конкурентов.',
+    //         itemName: 'Конкурент',
+    //         btnText: 'Прописать прямых',
+    //         minElements: 1,
 
-            objectFields: [{
-              name: 'name',
-              label: 'Конкурент',
-              placeholder: 'Название печатать тут',
-              type: ActionType.text,
-            }, {
-              name: 'properties',
-              label: 'Свойства',
-              type: ActionType.checkboxArray,
-              sourceField: 'competitors_properties',
-            }],
-          },
-        }, {
-          id: 'competitors_difference',
-          question: 'Теперь нужно прописать отличия, чтобы отстроиться от конкурентов и подчеркнуть то самое важное отличие:',
-          answerType: ActionType.text,
-        }],
-    },
+    //         objectFields: [{
+    //           name: 'name',
+    //           label: 'Конкурент',
+    //           placeholder: 'Название печатать тут',
+    //           type: ActionType.text,
+    //         }, {
+    //           name: 'properties',
+    //           label: 'Свойства',
+    //           type: ActionType.checkboxArray,
+    //           sourceField: 'competitors_properties',
+    //         }],
+    //       },
+    //     }, {
+    //       id: 'competitors_difference',
+    //       question: 'Теперь нужно прописать отличия, чтобы отстроиться от конкурентов и подчеркнуть то самое важное отличие:',
+    //       answerType: ActionType.text,
+    //     }],
+    // },
     {
       id: 'business_model',
       name: 'Бизнес-модель',
@@ -524,10 +524,12 @@ export const getInvestments = {
               label: 'Опыт',
               placeholder: 'Опыт/пояснение/описание здесь',
               type: ActionType.text,
-            }, {
-              name: 'image',
-              type: ActionType.image,
-            }],
+            }, 
+            // {
+            //   name: 'image',
+            //   type: ActionType.image,
+            // }
+          ],
           },
         },
       ],

@@ -39,7 +39,7 @@ const Head = styled.p`
   background: #25A9E0;
   color: #fff;
   width: calc((100% / 3) - 0.2em);
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 400;
   display: flex;
   justify-content: left;
@@ -112,30 +112,45 @@ const UserFocus = styled.span`
   font-style: italic;
 `;
 
-function BusinessModel({ data, slideQuestions }) {
+const TariffWrapper = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  line-height: 10px;
+`;
 
-  console.log(data, slideQuestions);
+function BusinessModel({ data, slideQuestions }) {
+  const [promotionTypes, monetization, tariffs, focus] = data;
+  const [promotionTypesId, monetizationId, tariffsId, focusId] = slideQuestions;
+  const headers = ['Канал провижения', 'Тип монетизации', 'Варианты тарифов'];
+
   return (
     <SlideBox>
-      {/* <Title>{title}</Title>
+      <Title>Бизнес-модель</Title>
       <HeadCont>
         {headers.map((head) => <Head>{head}</Head>)}
       </HeadCont>
       <ListCont>
         <ListItems>
-          {customers.map((customer) => <ListItemsLi key={customer}>{customer}</ListItemsLi>)}
+          {promotionTypes[promotionTypesId?.id].map((customer) => <ListItemsLi key={customer}>{customer}</ListItemsLi>)}
         </ListItems>
         <ListItems>
-          {movement.map((step) => <ListItemsLi key={step}>{step}</ListItemsLi>)}
+          {monetization[monetizationId?.id].map((step) => <ListItemsLi key={step}>{step}</ListItemsLi>)}
         </ListItems>
         <ListItems>
-          {money.map((coin) => <ListItemsLi key={coin}>{coin}</ListItemsLi>)}
+          {tariffs[tariffsId?.id].map((tariff) => 
+          <ListItemsLi key={tariff?.name}>
+            <TariffWrapper>
+              <span>{tariff?.name}</span> 
+              <span>{tariff?.description}</span>
+            </TariffWrapper>
+          </ListItemsLi>)}
         </ListItems>
       </ListCont>
       <BottomBlock>
         <BottomContentTitle>Фокус:</BottomContentTitle>
-        <BottomContentText>На текущем этапе фокус на <UserFocus>{focus}</UserFocus></BottomContentText>
-      </BottomBlock> */}
+        <BottomContentText>На текущем этапе фокус на <UserFocus>{focus[focusId?.id]}</UserFocus></BottomContentText>
+      </BottomBlock>
     </SlideBox>
   )
 }

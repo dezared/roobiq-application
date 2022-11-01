@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import Button from './controls/Button';
 import { DefineSlide } from './slides/DefineSlide';
 import scenarios from '../configs/scenarios';
-
+import {Link} from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-
 import "../styles/utils.css";
 
 const Wrap = styled.div`
@@ -31,6 +30,7 @@ const Content = styled.div`
 
 const Title = styled.h1`
   font-size: 30px;
+  line-height: 36px;
   color: #2E3135;
   text-align: left;
   top: 7.5%;
@@ -124,16 +124,37 @@ const MyButton = styled(Button)`
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  margin-top: 10px!important;
+`;
+
+const MyButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  color: #9191A1;
 `;
 
 function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) {
 
   const [activeSlide, setActiveSlide] = useState(сurrentStep);
 
+  const isLastSlide = scenarios[scenarioId]?.steps.length > сurrentStep + 1;
+
+  const renderTitle = useMemo(() => {
+    if (!isLastSlide) {
+      return <span>Презентация <br/> полностью готова:</span> 
+    }
+    return <span>Презентация по итогу <br/> {сurrentStep + 1}-й секции</span> 
+  }, [isLastSlide]);
+
+  
+
   return (
     <Wrap>
       <Content>
-        <Title>Презентация по итогу <br/> {сurrentStep + 1}-й секции</Title>
+        <Title>{renderTitle}</Title>
         <CarouselCustomWrapper>       
           <Carousel selectedItem={activeSlide} showStatus={false} showIndicators={false} showThumbs={false}>
             {answers?.map((item, itemIndex) => {
@@ -168,7 +189,18 @@ function CheckPresentation({ handleChange, answers, сurrentStep, scenarioId }) 
             </CarouselPreviewWrapper>   
           )}    
         </CarouselCustomWrapper>
-        <MyButton onClick={handleChange}>Вернуться к созданию</MyButton>
+        <MyButtonWrapper>
+          {isLastSlide ? (
+            <MyButton onClick={handleChange}>Вернуться к созданию</MyButton>
+            ) : (
+              <>
+                <span>Функция находится в разработке</span>
+                <MyButton onClick={handleChange} disabled>Экспорт</MyButton>
+                <MyButton component={Link} to="/">На главную</MyButton>
+              </>
+            )
+          }
+      </MyButtonWrapper>
       </Content>
     </Wrap>
   )
