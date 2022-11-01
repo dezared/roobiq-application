@@ -70,9 +70,7 @@ export const DefineSlide = ({slideQuestions, type, answers, slideIndex}) => {
     case SLIDE_TYPES?.DIFFERENCE:
       return <DifferenceSlide solution={answers[5][2]["competitors_difference"]}></DifferenceSlide>;
     case SLIDE_TYPES?.TEAM:
-      return <TeamSlide people={answers[6][0]["members"].map(function(v) {
-        return { name: v.name, job: v.role, desc: v.experience, imageSrc: encodeImageFileAsURL(v.image) }
-    })}></TeamSlide>;
+      return <TeamSlide {...slideProps} />;
     default:
       return null;
   }

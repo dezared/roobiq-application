@@ -80,7 +80,6 @@ const SlideIcon = styled.img`
 `;
 
 function SolutionSlide({ data, slideQuestions }) {
-  console.log(BookIcon);
   const defaultData = [
     {
       name: 'Constructor',
@@ -101,8 +100,6 @@ function SolutionSlide({ data, slideQuestions }) {
 
   const finalTitle = title[titleId?.id] || 'Solution and product';
   const finalSolutionList = solutionList[solutionListId?.id] || defaultData;
-
-  console.log(finalTitle, finalSolutionList);
 
   const slideIcons = [PencilIcon, BrainIcon, BookIcon];
 

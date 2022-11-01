@@ -55,7 +55,7 @@ function Main() {
   return (
     <Wrap>
       <Header />
-       <ItemsWrap spacing={2}>
+       {/* <ItemsWrap spacing={2}>
         <Item>
             <span>Презентация для Microsoft</span>
             <div>
@@ -77,7 +77,7 @@ function Main() {
               <IconButton><DeleteIcon color="darkGrey" /></IconButton>
             </div>
         </Item>
-       </ItemsWrap>
+       </ItemsWrap> */}
        <MyButton component={Link} to="/constructor">Создать презентацию</MyButton>
     </Wrap>
   );

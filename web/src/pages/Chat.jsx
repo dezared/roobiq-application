@@ -2,7 +2,6 @@
 import React, {
   useCallback, useEffect, useMemo, useState, useRef
 } from 'react';
-import { useReactToPrint } from 'react-to-print';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom' ;
 import initScenarios from '../configs/scenarios';
@@ -163,21 +162,6 @@ function Chat() {
     setOpen(!open)
  }
 
- const [openPresentationCompleteViewer, setopenPresentationCompleteViewer] = React.useState(false);
-  const handleOpenPresentationCompleteViewer = () => handleChangePresentationCompleteViewer(true);
-  const handleClosePresentationCompleteViewer = () => handleChangePresentationCompleteViewer(false);
-
-  const handleChangePresentationCompleteViewer = () => {
-    setopenPresentationCompleteViewer(!openPresentationCompleteViewer)
- }
-
-
-  const componentRef = useRef();
-  const Example = () => {
-    const handlePrint = useReactToPrint({
-      content: () => componentRef.current,
-    });};
-
   return (
     <Wrap>
       <Content>
@@ -195,7 +179,7 @@ function Chat() {
           <div>
             <BtnGroup>
               {stepIndex + 1 >= tabs.length ? (
-                <Button onClick={function(event){ handleChangePresentationCompleteViewer(); Example() }} trigger={() => <button>Print this out!</button>}>Закончить создание</Button>
+                <Button onClick={handleOpen}>Закончить создание</Button>
               ) : (
                 <>
                   <Button onClick={handleOpen}>Смотреть</Button>
@@ -209,16 +193,6 @@ function Chat() {
             >
               <div>
                 <CheckPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChange} сurrentStep={stepIndex}/>
-              </div>
-            </Modal>
-
-            <Modal
-              open={openPresentationCompleteViewer}
-              onClose={handleClosePresentationCompleteViewer}
-              sx={{ overflow: "scroll" }}
-            >
-              <div>
-                <ViewPresentation scenarioId={finalScenarioId} answers={answers} handleChange={handleChangePresentationCompleteViewer} ref={componentRef} />
               </div>
             </Modal>
           </div>

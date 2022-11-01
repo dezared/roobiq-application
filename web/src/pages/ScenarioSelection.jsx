@@ -45,6 +45,11 @@ const GoalPanel = styled(List)`
   }
 `;
 
+const NewDesc = styled.span`
+  margin-left: 5px;
+  color: #9191A1;
+`;
+
 // eslint-disable-next-line react/prop-types
 function ScenarioSelection() {
   const scenarios = useMemo(() => initScenarios, []);
@@ -71,6 +76,7 @@ function ScenarioSelection() {
             onClick={onChooseScenario(item.numId)}
           >
             {item.name}
+            <NewDesc>{item?.numId == 2 && ' (В разработке)'}</NewDesc>
           </ListItemButton>
         ))}
       </GoalPanel>
