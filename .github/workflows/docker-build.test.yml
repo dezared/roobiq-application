@@ -22,7 +22,7 @@ jobs:
           docker system prune -a -f
 
     - uses: alex-ac/github-action-ssh-docker-compose@master
-      name: Docker-Compose Remote Deployment1
+      name: Docker-Compose Remote Deployment
       with:
         ssh_host: ${{ secrets.SSH_HOST }}
         ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
